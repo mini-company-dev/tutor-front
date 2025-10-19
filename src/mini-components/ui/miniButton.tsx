@@ -13,9 +13,9 @@ interface ButtonProps extends HTMLMotionProps<"button">, MiniComponetType {
 }
 
 const uiStyle: MiniUiStyleType = {
-  [MiniUiType.BASIC]: "mini-basic mini-shadow",
-  [MiniUiType.OUTLINE]: "mini-ol-b mini-t-b hover:mini-bg-b hover:mini-t-r",
-  [MiniUiType.BRAND]: "mini-bg-b hover:mini-bg-b/80 mini-shadow",
+  [MiniUiType.BASIC]: "mini-basic",
+  [MiniUiType.OUTLINE]: "mini-outline",
+  [MiniUiType.BRAND]: "mini-brand",
   [MiniUiType.NONE]: "",
 };
 

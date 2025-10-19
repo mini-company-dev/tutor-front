@@ -18,22 +18,25 @@ export default function Header() {
   return (
     <MiniBox
       motion={fadeInDown()}
-      className="sticky top-0 z-50 flex items-center justify-between px-10 py-4 mini-bg mini-shadow"
+      className="sticky top-0 z-50 flex items-center justify-between px-10 py-4 bg-[var(--bg)]/90 mini-shadow border-b border-gray-300"
     >
-      <Link href="/" className="text-xl font-bold mini-t-b">
+      <Link href="/" className="text-xl font-bold text-[var(--brand)]">
         LOGO
       </Link>
 
       {/* 네비게이션 */}
       <nav className="flex gap-8 mini-t text-sm">
-        <Link href="/tutor" className="hover:mini-t-b">
-          Tutor
+        <Link
+          href="/tutor"
+          className="hover:text-[var(--brand)] hover:font-bold"
+        >
+          튜터찾기
         </Link>
-        <Link href="/projects" className="hover:mini-t-b">
-          Projects
-        </Link>
-        <Link href="/contact" className="hover:mini-t-b">
-          Contact
+        <Link
+          href="/projects"
+          className="hover:text-[var(--brand)] hover:font-bold"
+        >
+          커뮤니티
         </Link>
       </nav>
 
@@ -43,7 +46,7 @@ export default function Header() {
         ui={MiniUiType.OUTLINE}
         motion={fadeIn(0.5)}
         hover={hoverScale()}
-        className="mini-round text-sm"
+        className="rounded-full text-sm hover:to-mini-brand"
       >
         Login
       </MiniButton>
