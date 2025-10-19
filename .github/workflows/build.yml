@@ -48,9 +48,9 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT }}
           script: |
-            sudo docker login -u ${{ secrets.DOCKERHUB_ID }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-            sudo docker pull ${{secrets.DOCKERHUB_USERNAME}}/front
-            sudo docker stop front
-            sudo docker container rm front
-            sudo docker run -dit -p 80:3000 --name front --network server --restart always ${{secrets.DOCKERHUB_USERNAME}}/front
-            sudo docker image prune -f
+            docker login -u ${{ secrets.DOCKERHUB_ID }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+            docker pull ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
+            docker stop front || true
+            docker container rm front || true
+            docker run -dit -p 80:3000 --name front --network server --restart always ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
+            docker image prune -f
