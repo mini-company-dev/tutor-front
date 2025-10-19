@@ -110,7 +110,7 @@ export default function TutorListSection({
             className="p-5 rounded-2xl shadow-lg"
           >
             <img
-              src={`/tutors/tutor${idx + 1}.jpg`}
+              src={`tutor.png`}
               alt={`${tutor.name} 프로필`}
               className="h-[200px] w-full object-cover rounded-xl mb-3"
             />
