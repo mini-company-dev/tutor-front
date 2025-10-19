@@ -26,7 +26,7 @@ export default function MiniCarousel({ images, className }: CarouselProps) {
     <div className={`relative w-full h-full overflow-hidden ${className}`}>
       <AnimatePresence mode="wait">
         <motion.img
-          key={images[index].image} // key가 바뀌면 새로운 이미지로 전환
+          key={images[index].image}
           src={images[index].image}
           alt={`Slide ${index}`}
           className="w-full object-cover"

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import MiniBox from '@/components/miniBox';
-import MiniButton from '@/components/miniButton';
-import MiniImageCard from '@/components/miniImageCard';
+import MiniBox from "@/mini-components/ui/miniBox";
+import MiniButton from "@/mini-components/ui/miniButton";
+import MiniImageCard from "@/mini-components/ui/miniImageCard";
 
 export default function LoginPage() {
   return (

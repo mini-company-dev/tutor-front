@@ -1,38 +1,84 @@
-import MiniButton from '@/components/miniButton';
+import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
+import {
+  fadeIn,
+  fadeInUp,
+} from "@/mini-components/animation/miniMotionAnimation";
+import { MiniUiType } from "@/mini-components/miniComponentConfig";
+import MiniBox from "@/mini-components/ui/miniBox";
+import MiniButton from "@/mini-components/ui/miniButton";
+import MiniInput from "@/mini-components/ui/miniInput";
 
 export default function MainHeroSection({ className }: { className?: string }) {
   return (
-    <section className={`h-screen ${className}`}>
-      <div className="col-start-3 col-end-11 flex flex-col justify-center text-left">
-        <h1 className="text-7xl leading-tight mini-text font-bold">
-          Reach Your
-        </h1>
-        <h1 className="text-7xl leading-tight mini-text font-bold">
-          Financial Goals
-        </h1>
-        <h1 className="text-7xl leading-tight mini-brand-text font-bold">
-          with MFS
-        </h1>
-        <p className="text-lg mini-light-text max-w-xl mt-4">
-          In a world that moves too fast, taking a moment to think clearly
-          becomes a rare strength. Simplicity, after all, is the result of deep
-          understanding — not the absence of complexity.
-        </p>
-        <div className="flex gap-4 mt-5">
-          <MiniButton className="w-[150px] mini-round">test</MiniButton>
-          <MiniButton className="w-[150px] mini-round" variant="outline">
-            test
-          </MiniButton>
+    <div
+      className={`h-screen flex flex-col justify-center items-center ${className}`}
+      style={{
+        background:
+          "linear-gradient(to top, color-mix(in srgb, var(--brand) 50%, transparent), color-mix(in srgb, var(--background) 50%, transparent))",
+      }}
+    >
+      <section>
+        <div className="col-start-1 col-end-21 mb-20 text-center">
+          <MiniBox ui={MiniUiType.NONE} motion={fadeInUp()}>
+            <h1 className="mini-t text-5xl font-bold">Get early access</h1>
+          </MiniBox>
+          <MiniBox ui={MiniUiType.NONE} motion={fadeIn(1.7)}>
+            <p className="mini-t-l text-lg mt-4">
+              Sign up now to be the first to know when we launch! Sign up now to
+              be
+              <br />
+              the first to know when we launch!
+            </p>
+          </MiniBox>
+          <div className="mt-8 flex justify-center">
+            <MiniInput
+              ui={MiniUiType.BASIC}
+              className="p-3 mini-round w-[550px] mr-3"
+            />
+            <MiniButton
+              ui={MiniUiType.BRAND}
+              hover={hoverScale(1.1)}
+              className="mini-round mini-t-r px-6 py-3 text-sm mini-shadow"
+            >
+              Search
+            </MiniButton>
+          </div>
         </div>
-      </div>
 
-      <div className="col-start-12 col-end-20 relative round overflow-hidden mt-12 mb-12">
-        <img
-          src="./picture.jpg"
-          alt="Finance"
-          className="inset-0 w-full h-full object-cover"
-        />
-      </div>
-    </section>
+        <div className="col-start-7 col-end-15 grid grid-cols-4 gap-8">
+          <MiniBox
+            ui={MiniUiType.BASIC}
+            className="flex flex-col items-center justify-center h-[150px] rounded-2xl mini-shadow"
+          >
+            <h3 className="mini-text font-bold">200</h3>
+            <p>student</p>
+          </MiniBox>
+
+          <MiniBox
+            ui={MiniUiType.BASIC}
+            className="flex flex-col items-center justify-center h-[150px] rounded-2xl mini-shadow"
+          >
+            <h3 className="mini-text font-bold">200</h3>
+            <p>student</p>
+          </MiniBox>
+
+          <MiniBox
+            ui={MiniUiType.BASIC}
+            className="flex flex-col items-center justify-center h-[150px] rounded-2xl mini-shadow"
+          >
+            <h3 className="mini-text font-bold">200</h3>
+            <p>student</p>
+          </MiniBox>
+
+          <MiniBox
+            ui={MiniUiType.BASIC}
+            className="flex flex-col items-center justify-center h-[150px] rounded-2xl mini-shadow"
+          >
+            <h3 className="mini-text font-bold">200</h3>
+            <p>student</p>
+          </MiniBox>
+        </div>
+      </section>
+    </div>
   );
 }

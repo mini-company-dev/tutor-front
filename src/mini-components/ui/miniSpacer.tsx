@@ -5,5 +5,5 @@ export default function MiniSpacer({
   size: number;
   className?: string;
 }) {
-  return <section className={`${className}`} style={{ height: `${size}px` }} />;
+  return <div className={`${className}`} style={{ height: `${size}px` }} />;
 }
