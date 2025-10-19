@@ -52,5 +52,5 @@ jobs:
             docker pull ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
             docker stop front || true
             docker container rm front || true
-            docker run -dit -p 80:3000 --name front --network server --restart always ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
+            docker run -dit -p 80:3000 --name front ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
             docker image prune -f
