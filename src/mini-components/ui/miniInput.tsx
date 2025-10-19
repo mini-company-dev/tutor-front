@@ -13,8 +13,8 @@ interface InputProps extends HTMLMotionProps<"input">, MiniComponetType {
 
 const uiStyle: MiniUiStyleType = {
   [MiniUiType.BASIC]: "mini-basic",
-  [MiniUiType.OUTLINE]: "mini-text mini-boarder-outline",
-  [MiniUiType.BRAND]: "mini-bg-b mini-t-r hover:mini-bg-b/80 mini-shadow",
+  [MiniUiType.OUTLINE]: "mini-outline",
+  [MiniUiType.BRAND]: "mini-brand",
   [MiniUiType.NONE]: "",
 };
 

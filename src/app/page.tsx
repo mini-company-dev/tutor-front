@@ -1,7 +1,7 @@
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
-import MainAboutSection from "@/sections/main/mainAboutSection";
-import MainHeroSection from "@/sections/main/mainHeroSection";
-import MainSubscribSection from "@/sections/main/mainSubscribSectios";
+import MainAboutSection from "@/app/sections/mainAboutSection";
+import MainHeroSection from "@/app/sections/mainHeroSection";
+import MainSubscribSection from "@/app/sections/mainSubscribSectios";
 
 export default function Home() {
   return (

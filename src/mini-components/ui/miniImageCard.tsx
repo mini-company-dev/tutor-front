@@ -15,8 +15,8 @@ interface CarouselProps extends HTMLMotionProps<"div">, MiniComponetType {
 
 const uiStyle: MiniUiStyleType = {
   [MiniUiType.BASIC]: "mini-basic",
-  [MiniUiType.OUTLINE]: "border border-[var(--brand)] mini-shadow",
-  [MiniUiType.BRAND]: "mini-bg-b hover:mini-bg-b/80 mini-shadow",
+  [MiniUiType.OUTLINE]: "mini-outline",
+  [MiniUiType.BRAND]: "mini-brand",
   [MiniUiType.NONE]: "",
 };
 

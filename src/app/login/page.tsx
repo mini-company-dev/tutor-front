@@ -40,7 +40,7 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 placeholder="example@gmail.com"
-                className="w-full px-4 py-2 mini-round"
+                className="w-full px-4 py-2 rounded-full"
               />
             </div>
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 placeholder="••••••••"
-                className="w-full px-4 py-2 mini-round"
+                className="w-full px-4 py-2 rounded-full"
               />
             </div>
 
@@ -60,7 +60,7 @@ export default function LoginPage() {
               ui={MiniUiType.BRAND}
               hover={hoverScale()}
               type="submit"
-              className="mt-4 py-2 w-full mini-round mini-t-r"
+              className="mt-4 py-2 w-full rounded-full mini-t-r"
             >
               로그인
             </MiniButton>
@@ -77,13 +77,13 @@ export default function LoginPage() {
           {/* 소셜 로그인 버튼 */}
           <div className="flex flex-col gap-2">
             <MiniButton
-              className="w-full py-2 mini-round"
+              className="w-full py-2 rounded-full"
               ui={MiniUiType.OUTLINE}
             >
               Google로 로그인
             </MiniButton>
             <MiniButton
-              className="w-full py-2 mini-round"
+              className="w-full py-2 rounded-full"
               ui={MiniUiType.OUTLINE}
             >
               Naver로 로그인

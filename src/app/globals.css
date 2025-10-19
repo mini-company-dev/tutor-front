@@ -1,17 +1,11 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #fbf5f3;
-  --background-light: #f7efec;
-  --background-light-outline: #d1c7c2;
-
-  --foreground: #1a1a2e;
-  --foreground-light: #56566d;
-
-  /* === Brand === */
   --brand: #4a90e2;
-  --brand-light: #a5c8f0;
-  --brand-dark: #2f6fb3;
+  --sub: #fafafa;
+  --bg: #ffffff;
+  --text: #1a1a2e;
+  --text-light: #6b7280;
 }
 
 body {
@@ -39,79 +33,26 @@ section * {
   transition: all 0.2s ease-in-out;
 }
 
+.mini-no-transition {
+  transition: none !important;
+}
+
 @layer utilities {
-  .mini-round {
-    @apply rounded-full;
-  }
-
-  .mini-shadow {
-    @apply shadow-lg;
-  }
-
+  /* Mini UI Styles */
   .mini-basic {
-    @apply text-[var(--foreground)] bg-[var(--background-light)] border border-[var(--background-light-outline)];
+    @apply text-[var(--text)] bg-[var(--sub)] border border-gray-200;
   }
 
-
-  .mini-t {
-    @apply text-[var(--foreground)];
+  .mini-brand {
+    @apply bg-[var(--brand)] text-white;
   }
 
-  .hover\:mini-t:hover {
-    @apply text-[var(--foreground)];
+  .hover\:to-mini-brand:hover {
+    @apply bg-[var(--brand)] text-white;
   }
 
-  .mini-t-r {
-    @apply text-[var(--background)];
+  .mini-outline {
+    @apply border border-[var(--brand)] text-[var(--brand)]
   }
 
-  .hover\:mini-t-r:hover {
-    @apply text-[var(--background)];
-  }
-
-  .mini-t-l {
-    @apply text-[var(--foreground-light)];
-  }
-
-  .mini-t-b {
-    @apply text-[var(--brand)];
-  }
-  
-  .hover\:mini-t-b:hover {
-    @apply text-[var(--brand)];
-  }
-
-
-
-  /* Border Colors */
-  .mini-ol {
-    @apply border border-[var(--foreground)];
-  }
-
-  .mini-ol-l {
-    @apply border border-[var(--foreground-light)];
-  }
-
-  .mini-ol-b {
-    @apply border border-[var(--brand)];
-  }
-
-
-
-  /* Background Colors */
-  .mini-bg {
-    @apply bg-[var(--background)];
-  }
-
-  .mini-bg-b {
-    @apply bg-[var(--brand)];
-  }
-
-  .hover\:mini-bg-b:hover {
-    @apply bg-[var(--brand)];
-  }
-
-  .mini-bg-l {
-    @apply bg-[var(--background-light)];
-  }
 }
