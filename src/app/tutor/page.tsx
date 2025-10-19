@@ -1,13 +1,7 @@
-"use client";
-
-import MiniBox from "@/mini-components/ui/miniBox";
-import MiniButton from "@/mini-components/ui/miniButton";
-import MiniImageCard from "@/mini-components/ui/miniImageCard";
-
 export default function LoginPage() {
   return (
     <section className="h-screen">
-      <div className="col-start-3 col-end-19 grid grid-cols-4 gap-8">
+      {/* <div className="col-start-3 col-end-19 grid grid-cols-4 gap-8">
         <MiniBox className="p-3">
           <MiniImageCard
             className="h-[300px] mini-round"
@@ -23,7 +17,7 @@ export default function LoginPage() {
             바로가기
           </MiniButton>
         </MiniBox>
-      </div>
+      </div> */}
     </section>
   );
 }
