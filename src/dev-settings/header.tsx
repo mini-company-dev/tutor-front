@@ -27,7 +27,7 @@ export default function Header() {
       {/* 네비게이션 */}
       <nav className="flex gap-8 mini-t text-sm">
         <Link
-          href="/tutor"
+          href="/tutors"
           className="hover:text-[var(--brand)] hover:font-bold"
         >
           튜터찾기

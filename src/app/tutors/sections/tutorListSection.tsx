@@ -7,77 +7,89 @@ import {
   hoverScale,
 } from "@/mini-components/animation/miniHoverAnimation";
 import MiniSelect from "@/mini-components/ui/miniDropdown";
-import TutorProfileComponent from "@/components/tutorProfile";
-import { Tutor } from "@/types/tutor";
+import TutorProfileComponent from "@/components/tutorProfileComponent";
+import { TutorType } from "@/types/tutor";
 
-const tutor: Tutor[] = [
+const tutors: TutorType[] = [
   {
+    id: "tutor-1",
     name: "이수현",
     subject: "영어 회화",
     rating: 4.9,
     price: "25,000원",
   },
   {
+    id: "tutor-2",
     name: "김민준",
     subject: "수학 심화",
     rating: 4.8,
     price: "30,000원",
   },
   {
+    id: "tutor-3",
     name: "박지은",
     subject: "한국어 TOPIK",
     rating: 5.0,
     price: "28,000원",
   },
   {
+    id: "tutor-4",
     name: "John Park",
     subject: "Business English",
     rating: 4.7,
     price: "35,000원",
   },
   {
+    id: "tutor-5",
     name: "이수현",
     subject: "영어 회화",
     rating: 4.9,
     price: "25,000원",
   },
   {
+    id: "tutor-6",
     name: "김민준",
     subject: "수학 심화",
     rating: 4.8,
     price: "30,000원",
   },
   {
+    id: "tutor-7",
     name: "박지은",
     subject: "한국어 TOPIK",
     rating: 5.0,
     price: "28,000원",
   },
   {
+    id: "tutor-8",
     name: "John Park",
     subject: "Business English",
     rating: 4.7,
     price: "35,000원",
   },
   {
+    id: "tutor-9",
     name: "이수현",
     subject: "영어 회화",
     rating: 4.9,
     price: "25,000원",
   },
   {
+    id: "tutor-10",
     name: "김민준",
     subject: "수학 심화",
     rating: 4.8,
     price: "30,000원",
   },
   {
+    id: "tutor-11",
     name: "박지은",
     subject: "한국어 TOPIK",
     rating: 5.0,
     price: "28,000원",
   },
   {
+    id: "tutor-12",
     name: "John Park",
     subject: "Business English",
     rating: 4.7,
@@ -155,7 +167,7 @@ export default function TutorListSection({
       </div>
       {/* 튜터 리스트 */}
       <div className="col-start-3 col-end-19 grid grid-cols-4 gap-8">
-        {tutor.map((tutor, idx) => (
+        {tutors.map((tutor, idx) => (
           <div key={idx}>
             <TutorProfileComponent tutor={tutor} />
           </div>
