@@ -29,7 +29,6 @@ const uiStyle: MiniUiStyleType = {
 
 // === 컴포넌트 ===
 export default function MiniDropdown({
-  label,
   options,
   placeholder = "선택하세요",
   onValueSelect,

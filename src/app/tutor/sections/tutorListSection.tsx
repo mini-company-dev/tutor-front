@@ -6,8 +6,84 @@ import {
   hoverLift,
   hoverScale,
 } from "@/mini-components/animation/miniHoverAnimation";
-import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import MiniSelect from "@/mini-components/ui/miniDropdown";
+import TutorProfileComponent from "@/components/tutorProfile";
+import { Tutor } from "@/types/tutor";
+
+const tutor: Tutor[] = [
+  {
+    name: "이수현",
+    subject: "영어 회화",
+    rating: 4.9,
+    price: "25,000원",
+  },
+  {
+    name: "김민준",
+    subject: "수학 심화",
+    rating: 4.8,
+    price: "30,000원",
+  },
+  {
+    name: "박지은",
+    subject: "한국어 TOPIK",
+    rating: 5.0,
+    price: "28,000원",
+  },
+  {
+    name: "John Park",
+    subject: "Business English",
+    rating: 4.7,
+    price: "35,000원",
+  },
+  {
+    name: "이수현",
+    subject: "영어 회화",
+    rating: 4.9,
+    price: "25,000원",
+  },
+  {
+    name: "김민준",
+    subject: "수학 심화",
+    rating: 4.8,
+    price: "30,000원",
+  },
+  {
+    name: "박지은",
+    subject: "한국어 TOPIK",
+    rating: 5.0,
+    price: "28,000원",
+  },
+  {
+    name: "John Park",
+    subject: "Business English",
+    rating: 4.7,
+    price: "35,000원",
+  },
+  {
+    name: "이수현",
+    subject: "영어 회화",
+    rating: 4.9,
+    price: "25,000원",
+  },
+  {
+    name: "김민준",
+    subject: "수학 심화",
+    rating: 4.8,
+    price: "30,000원",
+  },
+  {
+    name: "박지은",
+    subject: "한국어 TOPIK",
+    rating: 5.0,
+    price: "28,000원",
+  },
+  {
+    name: "John Park",
+    subject: "Business English",
+    rating: 4.7,
+    price: "35,000원",
+  },
+];
 
 export default function TutorListSection({
   className,
@@ -40,9 +116,10 @@ export default function TutorListSection({
           {/* 필터 & 정렬 */}
           <div className="flex gap-3">
             <MiniSelect
-              hover={hoverLift(-4, 0)}
+              hover={hoverLift()}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
-              ui={MiniUiType.BASIC}
+              ui={MiniUiType.OUTLINE}
+              placeholder="과목 선택"
               options={[
                 { value: "all", label: "전체 과목" },
                 { value: "english", label: "영어" },
@@ -51,9 +128,10 @@ export default function TutorListSection({
               ]}
             />
             <MiniSelect
-              hover={hoverLift(-4, 0)}
+              hover={hoverLift()}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}
+              placeholder="지역 선택"
               options={[
                 { value: "all", label: "전체 지역" },
                 { value: "seoul", label: "서울" },
@@ -62,9 +140,10 @@ export default function TutorListSection({
               ]}
             />
             <MiniSelect
-              hover={hoverLift(-4, 0)}
+              hover={hoverLift()}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
-              ui={MiniUiType.BRAND}
+              ui={MiniUiType.OUTLINE}
+              placeholder="정렬 기준"
               options={[
                 { value: "rating", label: "정렬: 평점순" },
                 { value: "price", label: "정렬: 가격순" },
@@ -74,73 +153,13 @@ export default function TutorListSection({
           </div>
         </MiniBox>
       </div>
-
       {/* 튜터 리스트 */}
       <div className="col-start-3 col-end-19 grid grid-cols-4 gap-8">
-        {[
-          {
-            name: "이수현",
-            subject: "영어 회화",
-            rating: "4.9",
-            price: "25,000원",
-          },
-          {
-            name: "김민준",
-            subject: "수학 심화",
-            rating: "4.8",
-            price: "30,000원",
-          },
-          {
-            name: "박지은",
-            subject: "한국어 TOPIK",
-            rating: "5.0",
-            price: "28,000원",
-          },
-          {
-            name: "John Park",
-            subject: "Business English",
-            rating: "4.7",
-            price: "35,000원",
-          },
-        ].map((tutor, idx) => (
-          <MiniBox
-            key={idx}
-            ui={MiniUiType.BASIC}
-            motion={fadeInUp()}
-            className="p-5 rounded-2xl shadow-lg"
-          >
-            <img
-              src={`tutor.png`}
-              alt={`${tutor.name} 프로필`}
-              className="h-[200px] w-full object-cover rounded-xl mb-3"
-            />
-            <h3 className="text-lg font-bold">{tutor.name}</h3>
-            <p className="text-[var(--text-light)] text-sm mb-1">
-              {tutor.subject}
-            </p>
-            <p className="text-sm text-[var(--text-light)] mb-2">
-              ⭐ {tutor.rating} | {tutor.price} / 회
-            </p>
-            <MiniButton
-              ui={MiniUiType.BRAND}
-              hover={hoverScale(1.1)}
-              className="w-full rounded-full py-2 text-sm"
-            >
-              프로필 보기
-            </MiniButton>
-          </MiniBox>
+        {tutor.map((tutor, idx) => (
+          <div key={idx}>
+            <TutorProfileComponent tutor={tutor} />
+          </div>
         ))}
-      </div>
-
-      {/* 더보기 버튼 */}
-      <div className="col-start-3 col-end-19 flex justify-center mt-10">
-        <MiniButton
-          ui={MiniUiType.OUTLINE}
-          hover={hoverScale(1.1)}
-          className="rounded-full px-6 py-3 text-sm"
-        >
-          더 많은 튜터 보기
-        </MiniButton>
       </div>
     </section>
   );
