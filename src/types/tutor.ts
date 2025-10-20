@@ -1,4 +1,5 @@
-export interface Tutor {
+export interface TutorType {
+  id: string;
   name: string;
   subject: string;
   rating: number;

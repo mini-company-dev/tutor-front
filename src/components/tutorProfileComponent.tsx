@@ -1,12 +1,18 @@
+'use client';
+
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import MiniBox from "@/mini-components/ui/miniBox";
-import { Tutor } from "@/types/tutor";
+import { TutorType } from "@/types/tutor";
+import { useRouter } from "next/navigation";
 
-export default function TutorProfileComponent({ tutor }: { tutor: Tutor }) {
+export default function TutorProfileComponent({ tutor }: { tutor: TutorType }) {
+  const router = useRouter();
+
   return (
     <MiniBox
+      onClick={() => router.push(`/tutors/${tutor.id}`)}
       ui={MiniUiType.BASIC}
       motion={fadeInUp()}
       hover={hoverScale()}
