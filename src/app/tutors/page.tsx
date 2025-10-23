@@ -1,6 +1,6 @@
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
-import TutorListSection from "./sections/tutorListSection";
-import TutorListTitle from "./sections/tutorListTitle";
+import TutorListSection from "../../sections/tutors/tutorListSection";
+import TutorListTitle from "../../sections/tutors/tutorListTitle";
 
 export default function TutorListPage() {
   return (

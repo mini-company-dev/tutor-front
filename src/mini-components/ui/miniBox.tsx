@@ -7,8 +7,9 @@ import {
   MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
+import { defaultViewport } from "../animation/miniViewPort";
 
-interface BoxProps extends HTMLMotionProps<"div">, MiniComponetType {
+interface MiniBoxProps extends HTMLMotionProps<"div">, MiniComponetType {
   children?: React.ReactNode;
 }
 
@@ -24,9 +25,10 @@ export default function MiniBox({
   className = "",
   ui = MiniUiType.NONE,
   motion,
+  viewport = defaultViewport,
   hover,
   ...props
-}: BoxProps) {
+}: MiniBoxProps) {
   const animation: Variants = mergeVariants(motion, hover);
   const baseStyle = "";
 
@@ -34,8 +36,9 @@ export default function MiniBox({
     <fk.div
       variants={animation}
       initial={animation ? "hidden" : undefined}
-      animate={animation ? "visible" : undefined}
       whileHover={animation ? "whileHover" : undefined}
+      whileInView={animation ? "visible" : undefined}
+      viewport={viewport}
       className={`${baseStyle} ${uiStyle[ui]} ${className}`}
       {...props}
     >

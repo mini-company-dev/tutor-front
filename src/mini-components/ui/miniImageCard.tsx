@@ -1,16 +1,22 @@
 "use client";
 
-import { HTMLMotionProps, motion } from "framer-motion";
+import { Variants, ViewportOptions } from "framer-motion";
 import {
+  mergeVariants,
   MiniComponetType,
   MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
 import { ReactNode } from "react";
+import MiniBox from "./miniBox";
 
-interface CarouselProps extends HTMLMotionProps<"div">, MiniComponetType {
+interface CarouselProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    MiniComponetType {
   children?: ReactNode;
+  childClassName?: string;
   image: string;
+  viewport?: ViewportOptions | undefined;
 }
 
 const uiStyle: MiniUiStyleType = {
@@ -24,25 +30,34 @@ export default function MiniImageCard({
   children,
   image = "",
   className = "",
+  childClassName = "",
   ui = MiniUiType.NONE,
-  motion: animation,
+  motion,
+  hover,
+  viewport,
   ...props
 }: CarouselProps) {
-  const baseStyle =
-    "relative overflow-hidden flex items-center justify-center bg-center bg-cover bg-no-repeat text-white";
+  const animation: Variants = mergeVariants(motion, hover);
+
+  const baseStyle = "relative group flex flex-col";
 
   return (
-    <motion.div
-      variants={animation}
-      initial={animation ? "hidden" : undefined}
-      animate={animation ? "visible" : undefined}
-      className={`${baseStyle} ${uiStyle[ui]} ${className}`}
-      {...props}
-      style={{
-        backgroundImage: `url(${image})`,
-      }}
-    >
-      <div className="relative z-10 text-center">{children}</div>
-    </motion.div>
+    <div className={`${baseStyle} ${className}`} {...props}>
+      <MiniBox
+        ui={MiniUiType.NONE}
+        className="w-full h-[300px] rounded-2xl overflow-hidden"
+        hover={hover}
+        motion={motion}
+        viewport={viewport}
+      >
+        <img src={image} alt="" className="h-full w-full object-cover" />
+      </MiniBox>
+
+      <div
+        className={`absolute inset-0 flex flex-col opacity-0 group-hover:opacity-100 z-10 pointer-events-none ${childClassName}`}
+      >
+        {children}
+      </div>
+    </div>
   );
 }

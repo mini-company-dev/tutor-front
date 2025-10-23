@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
@@ -14,8 +14,8 @@ export default function TutorProfileComponent({ tutor }: { tutor: TutorType }) {
     <MiniBox
       onClick={() => router.push(`/tutors/${tutor.id}`)}
       ui={MiniUiType.BASIC}
-      motion={fadeInUp()}
-      hover={hoverScale()}
+      motion={[fadeInUp()]}
+      hover={[hoverScale()]}
       className="p-5 rounded-2xl shadow-lg"
     >
       <img

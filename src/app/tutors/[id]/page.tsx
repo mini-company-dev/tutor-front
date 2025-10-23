@@ -2,7 +2,7 @@ import MiniBox from "@/mini-components/ui/miniBox";
 import MiniButton from "@/mini-components/ui/miniButton";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
-import TutorDetailSectionComponent from "@/components/tutorDetailsSectionComponent";
+import TutorDetailSectionComponent from "@/components/tutors/tutorDetailsSectionComponent";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
 
 export default function TutorDetailSection({
@@ -18,7 +18,7 @@ export default function TutorDetailSection({
         <div className="col-start-3 col-end-8">
           <MiniBox
             ui={MiniUiType.BASIC}
-            motion={fadeInUp()}
+            motion={[fadeInUp()]}
             className="flex flex-col items-center text-center p-6 rounded-2xl mini-shadow"
           >
             <img
