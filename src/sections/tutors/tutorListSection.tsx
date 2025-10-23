@@ -7,7 +7,7 @@ import {
   hoverScale,
 } from "@/mini-components/animation/miniHoverAnimation";
 import MiniSelect from "@/mini-components/ui/miniDropdown";
-import TutorProfileComponent from "@/components/tutorProfileComponent";
+import TutorProfileComponent from "@/components/tutors/tutorProfileComponent";
 import { TutorType } from "@/types/tutor";
 
 const tutors: TutorType[] = [

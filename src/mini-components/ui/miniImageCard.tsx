@@ -29,7 +29,7 @@ export default function MiniImageCard({
   ...props
 }: CarouselProps) {
   const baseStyle =
-    "relative overflow-hidden flex items-center justify-center bg-center bg-cover bg-no-repeat text-white";
+    "relative w-full overflow-hidden flex items-center justify-center bg-center bg-cover bg-no-repeat text-white";
 
   return (
     <motion.div

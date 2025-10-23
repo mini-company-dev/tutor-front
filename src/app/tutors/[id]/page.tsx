@@ -2,7 +2,7 @@ import MiniBox from "@/mini-components/ui/miniBox";
 import MiniButton from "@/mini-components/ui/miniButton";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
-import TutorDetailSectionComponent from "@/components/tutorDetailsSectionComponent";
+import TutorDetailSectionComponent from "@/components/tutors/tutorDetailsSectionComponent";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
 
 export default function TutorDetailSection({
