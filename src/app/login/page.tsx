@@ -58,7 +58,7 @@ export default function LoginPage() {
             {/* 로그인 버튼 */}
             <MiniButton
               ui={MiniUiType.BRAND}
-              hover={hoverScale()}
+              hover={[hoverScale()]}
               type="submit"
               className="mt-4 py-2 w-full rounded-full mini-t-r"
             >

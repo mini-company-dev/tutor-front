@@ -8,7 +8,7 @@ export default function TutorListTitle({ className }: { className?: string }) {
       <MiniBox
         className="col-start-1 col-end-21 text-center"
         ui={MiniUiType.NONE}
-        motion={fadeInUp()}
+        motion={[fadeInUp()]}
       >
         <h1 className="text-5xl font-bold">Find the Right Tutor for You</h1>
         <p className="text-[var(--text-light)] mt-4">

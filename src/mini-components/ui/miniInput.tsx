@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion as fk, HTMLMotionProps, Variants } from "framer-motion";
 import {
+  mergeVariants,
   MiniComponetType,
   MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
+import { defaultViewport } from "../animation/miniViewPort";
 
 interface InputProps extends HTMLMotionProps<"input">, MiniComponetType {
   label?: string;
@@ -22,9 +24,12 @@ export default function MiniInput({
   label,
   className,
   ui = MiniUiType.NONE,
-  motion: animation,
+  motion,
+  hover,
+  viewport = defaultViewport,
   ...props
 }: InputProps) {
+  const animation: Variants = mergeVariants(motion, hover);
   const baseStyle = "";
 
   return (
@@ -34,10 +39,12 @@ export default function MiniInput({
           {label}
         </label>
       )}
-      <motion.input
+      <fk.input
         variants={animation}
         initial={animation ? "hidden" : undefined}
-        animate={animation ? "visible" : undefined}
+        whileHover={animation ? "whileHover" : undefined}
+        whileInView={animation ? "visible" : undefined}
+        viewport={viewport}
         className={`${baseStyle} ${uiStyle[ui]} ${className}`}
         {...props}
       />

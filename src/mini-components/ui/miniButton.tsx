@@ -7,6 +7,7 @@ import {
   MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
+import { defaultViewport } from "../animation/miniViewPort";
 
 interface ButtonProps extends HTMLMotionProps<"button">, MiniComponetType {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export default function MiniButton({
   ui = MiniUiType.NONE,
   motion,
   hover,
+  viewport = defaultViewport,
   ...props
 }: ButtonProps) {
   const animation: Variants = mergeVariants(motion, hover);
@@ -34,8 +36,9 @@ export default function MiniButton({
     <fk.button
       variants={animation}
       initial={animation ? "hidden" : undefined}
-      animate={animation ? "visible" : undefined}
       whileHover={animation ? "whileHover" : undefined}
+      whileInView={animation ? "visible" : undefined}
+      viewport={viewport}
       className={`${baseStyle} ${uiStyle[ui]} ${className}`}
       {...props}
     >

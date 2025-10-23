@@ -23,7 +23,7 @@ export default function MiniCarousel({ images, className }: CarouselProps) {
     setIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <div className={`relative w-full h-full overflow-hidden ${className}`}>
+    <div className={`relative w-full overflow-hidden ${className}`}>
       <AnimatePresence mode="wait">
         <motion.img
           key={images[index].image}
@@ -54,7 +54,6 @@ export default function MiniCarousel({ images, className }: CarouselProps) {
         <ChevronRight size={28} />
       </button>
 
-      {/* 하단 인디케이터 */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
         {images.map((_, i) => (
           <div

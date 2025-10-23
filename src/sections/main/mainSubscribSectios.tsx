@@ -1,44 +1,38 @@
+import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
+import { MiniUiType } from "@/mini-components/miniComponentConfig";
+import MiniHeroSection from "@/mini-components/section/miniHeroSection";
+import MiniButton from "@/mini-components/ui/miniButton";
+import MiniSpacer from "@/mini-components/ui/miniSpacer";
+
 export default function MainSubscribSection({
   className,
 }: {
   className?: string;
 }) {
   return (
-    <section>
-      <div className="col-start-3 col-end-11">
-        <h1 className="text-5xl">
-          Connecting Students,
-          <br />
-          Empowering Tutors
-          <br />
-          <strong className="text-[var(--brand)] font-bold">
-            Subscribe to our Newsletter
-          </strong>
+    <MiniHeroSection
+      className="h-screen"
+      video="https://www.youtube.com/embed/k49dtURLDoE?autoplay=1&mute=1&loop=1&playlist=k49dtURLDoE&controls=0&showinfo=0&modestbranding=1"
+    >
+      <div className="relative z-10 col-start-1 col-end-21 flex flex-col items-center justify-center text-center">
+        <h1 className="text-5xl font-bold">
+          영어가 내 <strong>생활속</strong>에 스며들다
         </h1>
-      </div>
-      <div className="col-start-11 col-end-19">
-        <p className="text-[var(--text-light)] ">
-          교육은 단순히 지식을 전달하는 과정이 아니라, 사람과 사람이 만나 함께
-          성장하는 여정입니다.
-          <br />
-          학생은 자신의 목표에 맞는 튜터를 만나며, 배우는 즐거움과 성취를
-          경험합니다.
-          <br />
-          <br />
-          튜터는 자신의 경험과 전문성을 바탕으로 학습자의 잠재력을 이끌어내는
-          파트너가 됩니다.
-          <br />
-          학습이 일방향이 아닌 ‘소통과 발견의 과정’이 될 때, 진정한 교육의
-          가치가 실현됩니다.
-          <br />
-          <br />
-          우리는 튜터와 학생이 함께 성장하고,
-          <br />
-          더 나은 배움을 만들어가는 공간을 지향합니다.
-          <br />
-          지금, 당신의 배움이 시작되는 곳에서 함께하세요.
+        <MiniSpacer size={10} />
+        <p className="text-lg text-[var(--text-light)]">
+          나만의 맞춤형 튜터와
+          <strong>EasyFun</strong>
+          화상영어
         </p>
+        <MiniSpacer size={20} />
+        <MiniButton
+          ui={MiniUiType.BRAND}
+          className="px-10 rounded-full"
+          hover={[hoverScale()]}
+        >
+          시작하기
+        </MiniButton>
       </div>
-    </section>
+    </MiniHeroSection>
   );
 }

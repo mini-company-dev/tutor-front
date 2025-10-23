@@ -18,7 +18,7 @@ export default function TutorDetailSection({
         <div className="col-start-3 col-end-8">
           <MiniBox
             ui={MiniUiType.BASIC}
-            motion={fadeInUp()}
+            motion={[fadeInUp()]}
             className="flex flex-col items-center text-center p-6 rounded-2xl mini-shadow"
           >
             <img

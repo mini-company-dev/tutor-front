@@ -1,20 +1,15 @@
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
+import MiniHeroSection from "@/mini-components/section/miniHeroSection";
 import MiniButton from "@/mini-components/ui/miniButton";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
 
 export default function MainHeroSection({ className }: { className?: string }) {
   return (
-    <section
-      className={`relative w-full h-[80vh] overflow-hidden ${className ?? ""}`}
+    <MiniHeroSection
+      className="h-screen"
+      video="https://www.youtube.com/embed/k49dtURLDoE?autoplay=1&mute=1&loop=1&playlist=k49dtURLDoE&controls=0&showinfo=0&modestbranding=1"
     >
-      <iframe
-        className="absolute top-1/2 left-1/2 w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 scale-[1.3] z-[-1]"
-        src="https://www.youtube.com/embed/k49dtURLDoE?autoplay=1&mute=1&loop=1&playlist=k49dtURLDoE&controls=0&showinfo=0&modestbranding=1"
-        title="YouTube video background"
-        allow="autoplay; fullscreen"
-      />
-
       <div className="relative z-10 col-start-1 col-end-21 flex flex-col items-center justify-center text-center">
         <h1 className="text-5xl font-bold">
           영어가 내 <strong>생활속</strong>에 스며들다
@@ -29,11 +24,11 @@ export default function MainHeroSection({ className }: { className?: string }) {
         <MiniButton
           ui={MiniUiType.BRAND}
           className="px-10 rounded-full"
-          hover={hoverScale()}
+          hover={[hoverScale()]}
         >
           시작하기
         </MiniButton>
       </div>
-    </section>
+    </MiniHeroSection>
   );
 }

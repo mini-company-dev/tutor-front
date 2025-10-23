@@ -4,9 +4,7 @@ import Link from "next/link";
 import MiniButton from "@/mini-components/ui/miniButton";
 import { useRouter } from "next/navigation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
-import hoverAnimation, {
-  hoverScale,
-} from "@/mini-components/animation/miniHoverAnimation";
+import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import {
   fadeIn,
   fadeInDown,
@@ -17,8 +15,8 @@ export default function Header() {
   const router = useRouter();
   return (
     <MiniBox
-      motion={fadeInDown()}
-      className="sticky top-0 z-50 flex items-center justify-between px-10 py-4 bg-[var(--bg)]/90 mini-shadow border-b border-gray-300"
+      motion={[fadeInDown()]}
+      className="sticky w-full top-0 z-50 flex items-center justify-between px-10 py-4 bg-[var(--bg)]/90 mini-shadow border-b border-gray-300"
     >
       <Link href="/" className="text-xl font-bold text-[var(--brand)]">
         LOGO
@@ -44,8 +42,8 @@ export default function Header() {
       <MiniButton
         onClick={() => router.push("/login")}
         ui={MiniUiType.OUTLINE}
-        motion={fadeIn(0.5)}
-        hover={hoverScale()}
+        motion={[fadeIn(0.5)]}
+        hover={[hoverScale()]}
         className="rounded-full text-sm hover:to-mini-brand"
       >
         Login
