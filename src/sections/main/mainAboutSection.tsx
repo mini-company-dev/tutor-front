@@ -2,7 +2,10 @@ import {
   hoverBright,
   hoverLift,
 } from "@/mini-components/animation/miniHoverAnimation";
-import { fadeIn } from "@/mini-components/animation/miniMotionAnimation";
+import {
+  fadeIn,
+  fadeInUp,
+} from "@/mini-components/animation/miniMotionAnimation";
 import MiniBox from "@/mini-components/ui/miniBox";
 import MiniImageCard from "@/mini-components/ui/miniImageCard";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
@@ -17,7 +20,7 @@ export default function MainAboutSection({
       <section>
         <MiniBox
           className="col-start-1 col-end-21 text-center"
-          motion={[fadeIn(1.5)]}
+          motion={[fadeInUp()]}
         >
           <h2 className="text-4xl font-bold">
             나만의 맞춤형 튜터와 <strong>EasyFun 화상영어</strong>

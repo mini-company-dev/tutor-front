@@ -1,17 +1,25 @@
-import { useState } from 'react';
+import { login } from "@/lib/auth";
+import { useState } from "react";
 
 export default function useLoginForm() {
-  const [error, setError] = useState('');
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const callApi = () => {};
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
 
-  const onSubmit = (e: any) => {
-    // 아이디가 15자 이상이다
-    setError('Test');
-    callApi()
-    return;
+    try {
+      const result = await login(username, password);
+      setMessage(result.message || "로그인 성공");
+    } catch (err: any) {
+      setMessage(`${err.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
-  return { error, onSubmit};
+
+  return { handleSubmit, message, loading, setUsername, setPassword };
 }
