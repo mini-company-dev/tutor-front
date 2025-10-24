@@ -4,7 +4,7 @@ import { motion as fk, HTMLMotionProps, Variants } from "framer-motion";
 import {
   mergeVariants,
   MiniComponetType,
-  MiniUiStyleType,
+  MiniUiSize,
   MiniUiType,
 } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
@@ -13,24 +13,32 @@ interface ButtonProps extends HTMLMotionProps<"button">, MiniComponetType {
   children: React.ReactNode;
 }
 
-const uiStyle: MiniUiStyleType = {
+const uiStyle = {
   [MiniUiType.BASIC]: "mini-basic",
   [MiniUiType.OUTLINE]: "mini-outline",
   [MiniUiType.BRAND]: "mini-brand",
   [MiniUiType.NONE]: "",
 };
 
+const uiSizeStyle = {
+  [MiniUiSize.SMALL]: "p-8",
+  [MiniUiSize.MEDIUM]: "px-5 py-2.5",
+  [MiniUiSize.LARGE]: "p-20",
+  [MiniUiSize.NONE]: "",
+};
+
 export default function MiniButton({
   children,
   className = "",
   ui = MiniUiType.NONE,
-  motion,
-  hover,
+  uiSize = MiniUiSize.MEDIUM,
+  uiMotion: motion,
+  uiHover: hover,
   viewport = defaultViewport,
   ...props
 }: ButtonProps) {
   const animation: Variants = mergeVariants(motion, hover);
-  const baseStyle = "px-5 py-2.5 font-semibold";
+  const baseStyle = `${uiSizeStyle[uiSize]} ${uiStyle[ui]} font-semibold`;
 
   return (
     <fk.button
@@ -39,7 +47,7 @@ export default function MiniButton({
       whileHover={animation ? "whileHover" : undefined}
       whileInView={animation ? "visible" : undefined}
       viewport={viewport}
-      className={`${baseStyle} ${uiStyle[ui]} ${className}`}
+      className={`${baseStyle} ${className}`}
       {...props}
     >
       {children}

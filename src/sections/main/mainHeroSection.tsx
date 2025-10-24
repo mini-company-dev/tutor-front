@@ -24,7 +24,7 @@ export default function MainHeroSection({ className }: { className?: string }) {
         <MiniButton
           ui={MiniUiType.BRAND}
           className="w-30 rounded-2xl"
-          hover={[hoverScale()]}
+          uiHover={[hoverScale()]}
         >
           시작하기
         </MiniButton>

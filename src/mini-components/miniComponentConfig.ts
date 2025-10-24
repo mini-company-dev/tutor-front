@@ -2,8 +2,9 @@ import { Variants } from "framer-motion";
 
 export interface MiniComponetType {
   ui?: MiniUiType;
-  motion?: Variants[] | undefined;
-  hover?: Variants[] | undefined;
+  uiMotion?: Variants[] | undefined;
+  uiHover?: Variants[] | undefined;
+  uiSize?: MiniUiSize;
 }
 
 export enum MiniUiType {
@@ -13,9 +14,12 @@ export enum MiniUiType {
   NONE = "none",
 }
 
-export type MiniUiStyleType = {
-  [key in MiniUiType]: string;
-};
+export enum MiniUiSize {
+  SMALL = "sm",
+  MEDIUM = "md",
+  LARGE = "lg",
+  NONE = "none",
+}
 
 export const mergeVariants = (
   ...data: (Variants[] | undefined)[]

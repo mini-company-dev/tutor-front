@@ -118,7 +118,7 @@ export default function TutorListSection({
             />
             <MiniButton
               ui={MiniUiType.BRAND}
-              hover={[hoverScale(1.1)]}
+              uiHover={[hoverScale(1.1)]}
               className="rounded-full px-5 py-3 text-sm shadow-lg w-[80px]"
             >
               검색
@@ -128,7 +128,7 @@ export default function TutorListSection({
           {/* 필터 & 정렬 */}
           <div className="flex gap-3">
             <MiniSelect
-              hover={[hoverLift()]}
+              uiHover={[hoverLift()]}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}
               placeholder="과목 선택"
@@ -140,7 +140,7 @@ export default function TutorListSection({
               ]}
             />
             <MiniSelect
-              hover={[hoverLift()]}
+              uiHover={[hoverLift()]}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}
               placeholder="지역 선택"
@@ -152,7 +152,7 @@ export default function TutorListSection({
               ]}
             />
             <MiniSelect
-              hover={[hoverLift()]}
+              uiHover={[hoverLift()]}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}
               placeholder="정렬 기준"

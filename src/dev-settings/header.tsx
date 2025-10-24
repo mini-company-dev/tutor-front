@@ -10,19 +10,23 @@ import {
   fadeInDown,
 } from "@/mini-components/animation/miniMotionAnimation";
 import MiniBox from "@/mini-components/ui/miniBox";
+import { useState } from "react";
+import { useAuthStore } from "@/store/authStore";
 
 export default function Header() {
   const router = useRouter();
+  const [hasToken, setHasToken] = useState(false);
+  const { id } = useAuthStore();
+
   return (
     <MiniBox
-      motion={[fadeInDown()]}
-      className="sticky w-full top-0 z-50 flex items-center justify-between px-10 py-4 bg-[var(--bg)]/90 mini-shadow border-b border-gray-300"
+      uiMotion={[fadeInDown()]}
+      className="sticky w-full top-0 z-50 flex items-center justify-between px-10 py-4 bg-[var(--bg)]/90 border-b border-gray-300"
     >
       <Link href="/" className="text-xl font-bold text-[var(--brand)]">
         LOGO
       </Link>
 
-      {/* 네비게이션 */}
       <nav className="flex gap-8 mini-t text-sm">
         <Link
           href="/tutors"
@@ -38,16 +42,27 @@ export default function Header() {
         </Link>
       </nav>
 
-      {/* 버튼 */}
-      <MiniButton
-        onClick={() => router.push("/login")}
-        ui={MiniUiType.OUTLINE}
-        motion={[fadeIn(0.5)]}
-        hover={[hoverScale()]}
-        className=" rounded-2xl text-sm hover:to-mini-brand"
-      >
-        Login
-      </MiniButton>
+      {hasToken ? (
+        <MiniButton
+          onClick={() => router.push("/mypage")}
+          ui={MiniUiType.OUTLINE}
+          uiMotion={[fadeIn(0.5)]}
+          uiHover={[hoverScale()]}
+          className="rounded-2xl text-sm"
+        >
+          My Page
+        </MiniButton>
+      ) : (
+        <MiniButton
+          onClick={() => router.push("/login")}
+          ui={MiniUiType.OUTLINE}
+          uiMotion={[fadeIn(0.5)]}
+          uiHover={[hoverScale()]}
+          className="rounded-2xl text-sm"
+        >
+          Login
+        </MiniButton>
+      )}
     </MiniBox>
   );
 }

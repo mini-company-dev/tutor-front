@@ -4,7 +4,6 @@ import { motion as fk, HTMLMotionProps, Variants } from "framer-motion";
 import {
   mergeVariants,
   MiniComponetType,
-  MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
@@ -13,7 +12,7 @@ interface InputProps extends HTMLMotionProps<"input">, MiniComponetType {
   label?: string;
 }
 
-const uiStyle: MiniUiStyleType = {
+const uiStyle = {
   [MiniUiType.BASIC]: "mini-basic",
   [MiniUiType.OUTLINE]: "mini-outline",
   [MiniUiType.BRAND]: "mini-brand",
@@ -24,8 +23,8 @@ export default function MiniInput({
   label,
   className,
   ui = MiniUiType.NONE,
-  motion,
-  hover,
+  uiMotion: motion,
+  uiHover: hover,
   viewport = defaultViewport,
   ...props
 }: InputProps) {

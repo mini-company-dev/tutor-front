@@ -5,7 +5,6 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   mergeVariants,
   MiniComponetType,
-  MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
 
@@ -20,7 +19,7 @@ interface MiniDropdownProps
 }
 
 // === 공통 UI 스타일 (고정) ===
-const uiStyle: MiniUiStyleType = {
+const uiStyle = {
   [MiniUiType.BASIC]: "mini-basic",
   [MiniUiType.OUTLINE]: "mini-outline",
   [MiniUiType.BRAND]: "mini-brand",
@@ -34,8 +33,8 @@ export default function MiniDropdown({
   onValueSelect,
   className = "",
   ui = MiniUiType.BASIC,
-  motion: motionVariant,
-  hover,
+  uiMotion: motionVariant,
+  uiHover: hover,
   ...props
 }: MiniDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);

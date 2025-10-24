@@ -1,6 +1,6 @@
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
-import { MiniUiType } from "@/mini-components/miniComponentConfig";
+import { MiniUiSize, MiniUiType } from "@/mini-components/miniComponentConfig";
 import MiniBox from "@/mini-components/ui/miniBox";
 import MiniButton from "@/mini-components/ui/miniButton";
 import MiniInput from "@/mini-components/ui/miniInput";
@@ -12,7 +12,7 @@ export default function LoginPage() {
     <main className="min-h-screen flex items-center justify-center">
       <MiniBox
         ui={MiniUiType.BASIC}
-        motion={[fadeInUp()]}
+        uiMotion={[fadeInUp()]}
         className="rounded-2xl shadow-md w-[370px] p-8"
       >
         {/* 타이틀 */}
@@ -37,15 +37,17 @@ export default function LoginPage() {
         <div className="flex flex-col gap-2">
           <MiniButton
             className="w-full py-2 rounded-full hover:to-mini-brand"
-            hover={[hoverScale()]}
+            uiHover={[hoverScale()]}
+            uiSize={MiniUiSize.NONE}
             ui={MiniUiType.OUTLINE}
           >
             Google로 로그인
           </MiniButton>
           <MiniButton
             className="w-full py-2 rounded-full hover:to-mini-brand"
-            hover={[hoverScale()]}
+            uiHover={[hoverScale()]}
             ui={MiniUiType.OUTLINE}
+            uiSize={MiniUiSize.NONE}
           >
             Naver로 로그인
           </MiniButton>
