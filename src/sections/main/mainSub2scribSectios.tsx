@@ -4,15 +4,21 @@ import MiniHeroSection from "@/mini-components/section/miniHeroSection";
 import MiniButton from "@/mini-components/ui/miniButton";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
 
-export default function MainHeroSection({ className }: { className?: string }) {
+export default function MainSub2scribSection({
+  className,
+}: {
+  className?: string;
+}) {
   return (
     <MiniHeroSection
-      className="h-screen"
+      className="h-[70vh]"
       video="https://www.youtube.com/embed/k49dtURLDoE?autoplay=1&mute=1&loop=1&playlist=k49dtURLDoE&controls=0&showinfo=0&modestbranding=1"
     >
-      <div className="relative z-10 col-start-1 col-end-21 flex flex-col items-center justify-center text-center">
+      <div className="relative z-10 col-start-5 col-end-21 flex flex-col justify-center">
         <h1 className="text-5xl font-bold">
-          영어가 내 <strong>생활속</strong>에 스며들다
+          마스터 튜터의 멘토링,
+          <br />
+          <strong>학습을 완성</strong>시킨다.
         </h1>
         <MiniSpacer size={10} />
         <p className="text-lg text-[var(--text-light)]">

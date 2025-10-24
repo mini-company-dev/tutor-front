@@ -44,7 +44,7 @@ export default function Header() {
         ui={MiniUiType.OUTLINE}
         motion={[fadeIn(0.5)]}
         hover={[hoverScale()]}
-        className="rounded-full text-sm hover:to-mini-brand"
+        className=" rounded-2xl text-sm hover:to-mini-brand"
       >
         Login
       </MiniButton>
