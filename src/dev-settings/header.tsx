@@ -10,13 +10,18 @@ import {
   fadeInDown,
 } from "@/mini-components/animation/miniMotionAnimation";
 import MiniBox from "@/mini-components/ui/miniBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthStore } from "@/store/authStore";
 
 export default function Header() {
   const router = useRouter();
   const [hasToken, setHasToken] = useState(false);
-  const { id } = useAuthStore();
+  const { sub } = useAuthStore();
+
+  useEffect(() => {
+    console.log("id", sub);
+    setHasToken(!!sub);
+  }, [sub]);
 
   return (
     <MiniBox

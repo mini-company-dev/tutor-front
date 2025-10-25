@@ -8,7 +8,7 @@ import {
   MiniUiType,
 } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface MiniBoxProps extends HTMLMotionProps<"div">, MiniComponetType {
   children?: React.ReactNode;

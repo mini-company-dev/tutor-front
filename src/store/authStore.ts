@@ -1,17 +1,28 @@
 "use client";
 
+import { MemberType } from "@/types/Member";
 import { create } from "zustand";
 
-interface AuthState {
-  id: string;
-  username: string;
-  name: string;
-  roles: string[];
+interface AuthState extends MemberType {
+  setUser: (user: Partial<AuthState>) => void;
+  clearUser: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  id: "",
+  sub: "",
   username: "",
   name: "",
   roles: [],
+  exp: 0,
+  iat: 0,
+  setUser: (user) => set((state) => ({ ...state, ...user })),
+  clearUser: () =>
+    set({
+      sub: "",
+      username: "",
+      name: "",
+      roles: [],
+      exp: 0,
+      iat: 0,
+    }),
 }));

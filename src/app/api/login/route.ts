@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { setCookie } from "cookies-next";
 import { API_BASE_URL } from "@/lib/env";
 
 export async function POST(req: NextRequest) {
@@ -43,14 +42,15 @@ export async function POST(req: NextRequest) {
     }
 
     const res = NextResponse.json({ message: "로그인 성공" });
-    setCookie("token", token, {
-      req,
-      res,
+
+    res.cookies.set({
+      name: "token",
+      value: token,
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 60 * 60 * 24 * 7, // 7일
     });
 
     return res;

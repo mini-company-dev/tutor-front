@@ -7,6 +7,8 @@ import MiniInput from "@/mini-components/ui/miniInput";
 import useLoginForm from "./useLoginForm";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/authStore";
+import axios from "axios";
 
 export default function LoginForm() {
   const {
@@ -19,12 +21,21 @@ export default function LoginForm() {
   } = useLoginForm();
 
   const router = useRouter();
+  const { setUser, clearUser } = useAuthStore();
 
   useEffect(() => {
     if (isSuccess) {
+      (async () => {
+        const res = await axios.get("/api/auth");
+        if (res.status >= 200 && res.status < 300) {
+          setUser(res.data);
+        } else {
+          clearUser();
+        }
+      })();
       router.push("/");
     }
-  }, [isSuccess, message]);
+  }, [isSuccess]);
 
   return (
     <form className="flex flex-col gap-4">

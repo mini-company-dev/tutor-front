@@ -3,7 +3,6 @@ import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import { MiniUiSize, MiniUiType } from "@/mini-components/miniComponentConfig";
 import MiniBox from "@/mini-components/ui/miniBox";
 import MiniButton from "@/mini-components/ui/miniButton";
-import MiniInput from "@/mini-components/ui/miniInput";
 import Link from "next/link";
 import LoginForm from "./../../domain/loginForm";
 

@@ -1,6 +1,5 @@
 import { login } from "@/lib/auth";
-import { useAuthStore } from "@/store/authStore";
-import { use, useState } from "react";
+import { useState } from "react";
 
 export default function useLoginForm() {
   const [username, setUsername] = useState("");
@@ -15,14 +14,8 @@ export default function useLoginForm() {
 
     try {
       const result = await login(username, password);
-      setMessage(result.message || "로그인 성공");
+      setMessage(result.message);
       setIsSuccess(true);
-      useAuthStore.setState({
-        id: "test",
-        username: username,
-        name: "사용자 이름",
-        roles: ["USER"],
-      });
     } catch (err: any) {
       setMessage(`${err.message}`);
     } finally {
