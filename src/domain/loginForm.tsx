@@ -1,16 +1,41 @@
 "use client";
 
-import { login } from "@/lib/auth";
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
-import { MiniUiType } from "@/mini-components/miniComponentConfig";
+import { MiniUiSize, MiniUiType } from "@/mini-components/miniComponentConfig";
 import MiniButton from "@/mini-components/ui/miniButton";
 import MiniInput from "@/mini-components/ui/miniInput";
-import { useState } from "react";
 import useLoginForm from "./useLoginForm";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/authStore";
+import axios from "axios";
 
 export default function LoginForm() {
-  const { handleSubmit, message, loading, setUsername, setPassword } =
-    useLoginForm();
+  const {
+    handleSubmit,
+    message,
+    loading,
+    isSuccess,
+    setUsername,
+    setPassword,
+  } = useLoginForm();
+
+  const router = useRouter();
+  const { setUser, clearUser } = useAuthStore();
+
+  useEffect(() => {
+    if (isSuccess) {
+      (async () => {
+        const res = await axios.get("/api/auth");
+        if (res.status >= 200 && res.status < 300) {
+          setUser(res.data);
+        } else {
+          clearUser();
+        }
+      })();
+      router.push("/");
+    }
+  }, [isSuccess]);
 
   return (
     <form className="flex flex-col gap-4">
@@ -22,7 +47,7 @@ export default function LoginForm() {
           type="username"
           onChange={(e) => setUsername(e.target.value)}
           placeholder="example"
-          className="w-full px-4 py-2 rounded-full"
+          className="w-full px-4 py-2 rounded-full shadow-inner"
         />
       </div>
 
@@ -34,14 +59,15 @@ export default function LoginForm() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           placeholder="••••••••"
-          className="w-full px-4 py-2 rounded-full"
+          className="w-full px-4 py-2 rounded-full shadow-inner"
         />
       </div>
 
       {/* 로그인 버튼 */}
       <MiniButton
         ui={MiniUiType.BRAND}
-        hover={[hoverScale()]}
+        uiHover={[hoverScale()]}
+        uiSize={MiniUiSize.NONE}
         onClick={handleSubmit}
         className="mt-4 py-2 w-full rounded-full mini-t-r"
       >

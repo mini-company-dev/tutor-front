@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function useLoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -13,7 +14,8 @@ export default function useLoginForm() {
 
     try {
       const result = await login(username, password);
-      setMessage(result.message || "로그인 성공");
+      setMessage(result.message);
+      setIsSuccess(true);
     } catch (err: any) {
       setMessage(`${err.message}`);
     } finally {
@@ -21,5 +23,12 @@ export default function useLoginForm() {
     }
   };
 
-  return { handleSubmit, message, loading, setUsername, setPassword };
+  return {
+    handleSubmit,
+    message,
+    loading,
+    isSuccess,
+    setUsername,
+    setPassword,
+  };
 }

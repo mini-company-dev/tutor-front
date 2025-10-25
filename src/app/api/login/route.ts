@@ -16,9 +16,7 @@ export async function POST(req: NextRequest) {
 
     const response = await fetch(`${API_BASE_URL}/login`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({ username, password }),
     });
 
@@ -29,18 +27,33 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 토큰이 있으면 쿠키에 저장
-    if (response.headers.has("Authorization")) {
-      const res = NextResponse.json({ message: "로그인 성공" });
-      res.cookies.set("token", response.headers.get("Authorization") || "", {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        path: "/",
-        maxAge: 60 * 60 * 24 * 7,
-      });
-      return res;
+    let token = response.headers.get("Authorization");
+    if (!token) {
+      try {
+        const data = await response.json();
+        token = data?.token || data?.access_token || "";
+      } catch {
+        token = "";
+      }
     }
-    return NextResponse.json({ message: "토큰 누락" }, { status: 500 });
+
+    if (!token) {
+      return NextResponse.json({ message: "토큰 누락" }, { status: 500 });
+    }
+
+    const res = NextResponse.json({ message: "로그인 성공" });
+
+    res.cookies.set({
+      name: "token",
+      value: token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7, // 7일
+    });
+
+    return res;
   } catch (err) {
     console.error("Login error:", err);
     return NextResponse.json({ message: "서버 오류" }, { status: 500 });

@@ -4,7 +4,6 @@ import { Variants, ViewportOptions } from "framer-motion";
 import {
   mergeVariants,
   MiniComponetType,
-  MiniUiStyleType,
   MiniUiType,
 } from "../miniComponentConfig";
 import { ReactNode } from "react";
@@ -19,7 +18,7 @@ interface CarouselProps
   viewport?: ViewportOptions | undefined;
 }
 
-const uiStyle: MiniUiStyleType = {
+const uiStyle = {
   [MiniUiType.BASIC]: "mini-basic",
   [MiniUiType.OUTLINE]: "mini-outline",
   [MiniUiType.BRAND]: "mini-brand",
@@ -32,12 +31,13 @@ export default function MiniImageCard({
   className = "",
   childClassName = "",
   ui = MiniUiType.NONE,
-  motion,
-  hover,
+  uiMotion,
+  uiHover,
+  uiSize,
   viewport,
   ...props
 }: CarouselProps) {
-  const animation: Variants = mergeVariants(motion, hover);
+  const animation: Variants = mergeVariants(uiMotion, uiHover);
 
   const baseStyle = "relative group flex flex-col";
 
@@ -46,8 +46,9 @@ export default function MiniImageCard({
       <MiniBox
         ui={MiniUiType.NONE}
         className="w-full h-[300px] rounded-2xl overflow-hidden"
-        hover={hover}
-        motion={motion}
+        uiHover={uiHover}
+        uiMotion={uiMotion}
+        uiSize={uiSize}
         viewport={viewport}
       >
         <img src={image} alt="" className="h-full w-full object-cover" />
