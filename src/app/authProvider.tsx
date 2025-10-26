@@ -3,23 +3,27 @@
 import { PropsWithChildren, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 import axios from "axios";
+import { MemberType } from "@/types/member";
 
 export default function AuthProvider({ children }: PropsWithChildren) {
   const { setUser, clearUser } = useAuthStore();
 
   useEffect(() => {
-    (async () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `${token}`;
+
       try {
-        const res = await axios.get("/api/auth");
-        if (res.status >= 200 && res.status < 300) {
-          setUser(res.data);
-        } else {
-          clearUser();
-        }
-      } catch (error) {
+        const { jwtDecode } = require("jwt-decode");
+        const payload: MemberType = jwtDecode(token);
+        setUser(payload);
+      } catch {
         clearUser();
       }
-    })();
+    } else {
+      clearUser();
+    }
   }, [setUser, clearUser]);
 
   return <>{children}</>;

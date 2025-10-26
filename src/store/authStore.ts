@@ -1,6 +1,6 @@
 "use client";
 
-import { MemberType } from "@/types/Member";
+import { MemberType } from "@/types/member";
 import { create } from "zustand";
 
 interface AuthState extends MemberType {

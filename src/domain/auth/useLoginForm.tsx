@@ -1,4 +1,7 @@
+import { ApiResponse } from "@/lib/apiFactory";
 import { loginApi } from "@/lib/auth";
+import { LoginResponse } from "@/types/auth";
+import axios from "axios";
 import { useState } from "react";
 
 export default function useLoginForm() {
@@ -6,6 +9,7 @@ export default function useLoginForm() {
   const [password, setPassword] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState("");
+  const [response, setResponse] = useState<LoginResponse>();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -19,8 +23,8 @@ export default function useLoginForm() {
       });
       setMessage(result.message ? result.message : "로그인 성공");
       setIsSuccess(true);
+      setResponse(result.data);
     } catch (err: any) {
-      console.log(err.message);
       setMessage(`${err.message}`);
       setIsSuccess(false);
     } finally {
@@ -35,5 +39,6 @@ export default function useLoginForm() {
     isSuccess,
     setUsername,
     setPassword,
+    response,
   };
 }

@@ -1,14 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { API_BASE_URL } from "@/lib/env";
-import { LoginResponse } from "@/types/auth";
+import { LoginRequest } from "@/types/auth";
+import { ApiResponse } from "./../../../../lib/apiFactory";
 
-export async function POST(req: NextRequest) {
+export interface ApiRequest {
+  token: string | null;
+}
+
+export async function POST(
+  req: NextRequest
+): Promise<NextResponse<ApiResponse<ApiRequest>>> {
   try {
-    const dto: LoginResponse = await req.json();
+    const dto: LoginRequest = await req.json();
 
     if (!dto.username || !dto.password) {
-      return NextResponse.json({ message: "필수 입력값 누락" }, { status: 400 });
+      return NextResponse.json(
+        {
+          data: { token: null },
+          message: "인증 정보가 없습니다.",
+        },
+        { status: 400 }
+      );
     }
 
     const response = await axios.post(`${API_BASE_URL}/api/auth/login`, dto, {
@@ -27,24 +40,32 @@ export async function POST(req: NextRequest) {
     }
 
     if (!token) {
-      return NextResponse.json({ message: "토큰 누락" }, { status: 500 });
+      return NextResponse.json(
+        {
+          data: { token: null },
+          message: "인증 실패",
+        },
+        { status: 500 }
+      );
     }
 
-    const res = NextResponse.json({ message: "로그인 성공" });
-
-    res.cookies.set({
-      name: "token",
-      value: token,
-      httpOnly: true,
-      secure: false,
-      sameSite: "strict",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
+    const res = NextResponse.json(
+      {
+        data: { token: token },
+        message: "인증 성공",
+      },
+      { status: 200 }
+    );
 
     return res;
   } catch (err: any) {
     console.error("Login error:", err.response?.data || err.message);
-    return NextResponse.json({ message: "서버 오류" }, { status: 500 });
+    return NextResponse.json(
+      {
+        data: { token: null },
+        message: "인증 실패",
+      },
+      { status: 500 }
+    );
   }
 }
