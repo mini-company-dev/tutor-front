@@ -14,10 +14,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Setting .env
-        run: |
-          echo ${{secrets.ENV}} > .env
         
       - name: Build Docker Image
         run: docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/tutor-frontend .
@@ -48,9 +44,7 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT }}
           script: |
+            cd ~/front
             docker login -u ${{ secrets.DOCKERHUB_ID }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-            docker pull ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
-            docker stop front || true
-            docker container rm front || true
-            docker run -dit -p 80:3000 --name front ${{secrets.DOCKERHUB_USERNAME}}/tutor-frontend
+            docker compose up -d
             docker image prune -f
