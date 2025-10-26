@@ -1,7 +1,5 @@
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
-import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import { MiniUiSize, MiniUiType } from "@/mini-components/miniComponentConfig";
-import MiniBox from "@/mini-components/ui/miniBox";
 import MiniButton from "@/mini-components/ui/miniButton";
 import Link from "next/link";
 import LoginForm from "../../domain/auth/loginForm";

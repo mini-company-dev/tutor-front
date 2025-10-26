@@ -1,10 +1,12 @@
-import { JoinResponse, LoginResponse } from "@/types/auth";
+import { JoinRequest, LoginRequest, LoginResponse } from "@/types/auth";
 import { ApiResponse, requestApi } from "./apiFactory";
 
-export async function loginApi(dto: LoginResponse): Promise<ApiResponse<void>> {
-  return requestApi<void>("POST", "/api/auth/login", dto);
+export async function loginApi(
+  dto: LoginRequest
+): Promise<ApiResponse<LoginResponse>> {
+  return requestApi<LoginResponse>("POST", "/api/auth/login", dto);
 }
 
-export async function joinApi(dto: JoinResponse): Promise<ApiResponse<void>> {
+export async function joinApi(dto: JoinRequest): Promise<ApiResponse<void>> {
   return requestApi<void>("POST", "/api/auth/join", dto);
 }

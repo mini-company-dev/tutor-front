@@ -2,20 +2,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios, { AxiosRequestConfig, Method } from "axios";
 import { API_BASE_URL } from "@/lib/env";
+import { ApiResponse } from "@/lib/apiFactory";
 
-export interface ApiResponse<T> {
+export interface ServerApiResponse<T> {
   data?: T;
   message?: string | null;
-  status: number;
 }
 
 export function createServerApiHandler<T>(method: Method, path: string) {
   return async (req: NextRequest): Promise<NextResponse<ApiResponse<T>>> => {
     try {
-      const token = req.cookies.get("token")?.value;
+      const token = req.headers.get("token");
       const dto = req.method === "GET" ? undefined : await req.json();
-
-      console.log(dto);
 
       const config: AxiosRequestConfig = {
         method,
@@ -23,18 +21,17 @@ export function createServerApiHandler<T>(method: Method, path: string) {
         data: dto,
         headers: {
           "Content-Type": "application/json",
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          ...(token ? { Authorization: `${token}` } : {}),
         },
         validateStatus: () => true,
       };
 
-      const res = await axios.request<ApiResponse<T>>(config);
+      const res = await axios.request<ServerApiResponse<T>>(config);
 
       return NextResponse.json<ApiResponse<T>>(
         {
           data: res.data as T,
           message: res.data?.message ?? "요청 성공",
-          status: res.status,
         },
         { status: res.status }
       );
@@ -43,8 +40,7 @@ export function createServerApiHandler<T>(method: Method, path: string) {
       return NextResponse.json(
         {
           data: undefined,
-          message: err.response?.data?.message || err.message || "서버 오류",
-          status: err.response?.status || 500,
+          message: err.response?.data?.message || err.message || "서버 오류"
         },
         { status: err.response?.status || 500 }
       );

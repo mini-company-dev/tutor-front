@@ -1,9 +1,13 @@
-export interface LoginResponse {
+export interface LoginRequest {
   username: string;
   password: string;
 }
 
-export interface JoinResponse {
+export interface LoginResponse {
+  token: string;
+}
+
+export interface JoinRequest {
   username: string;
   name: string;
   password: string;

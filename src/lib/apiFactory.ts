@@ -3,7 +3,6 @@ import axios, { AxiosRequestConfig, Method } from "axios";
 export interface ApiResponse<T> {
   data?: T;
   message?: string;
-  status: number;
 }
 
 export async function requestApi<T>(
@@ -22,15 +21,13 @@ export async function requestApi<T>(
     });
 
     return {
-      data: res.data,
+      data: res.data.data,
       message: res.data?.message || "요청 성공",
-      status: res.status,
     };
   } catch (error: any) {
     return {
       data: undefined,
       message: error.response?.data?.message || error.message || "요청 실패",
-      status: error.response?.status || 500,
     };
   }
 }

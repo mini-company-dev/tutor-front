@@ -19,7 +19,6 @@ export default function Header() {
   const { sub } = useAuthStore();
 
   useEffect(() => {
-    console.log("id", sub);
     setHasToken(!!sub);
   }, [sub]);
 

@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function LoginForm() {
   const {
@@ -18,24 +19,21 @@ export default function LoginForm() {
     isSuccess,
     setUsername,
     setPassword,
+    response,
   } = useLoginForm();
 
   const router = useRouter();
   const { setUser, clearUser } = useAuthStore();
 
   useEffect(() => {
-    if (isSuccess) {
-      (async () => {
-        const res = await axios.get("/api/auth");
-        if (res.status >= 200 && res.status < 300) {
-          setUser(res.data);
-        } else {
-          clearUser();
-        }
-      })();
+    if (isSuccess && response) {
+      localStorage.setItem("token", response.token);
+      axios.defaults.headers.common["token"] = `${response.token}`;
+      const payload = jwtDecode(response.token);
+      setUser(payload);
       router.push("/");
     }
-  }, [isSuccess]);
+  }, [isSuccess, response]);
 
   return (
     <form className="flex flex-col gap-4">
