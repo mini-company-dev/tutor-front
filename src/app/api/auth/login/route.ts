@@ -1,34 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
+import axios from "axios";
 import { API_BASE_URL } from "@/lib/env";
+import { LoginResponse } from "@/types/auth";
 
 export async function POST(req: NextRequest) {
   try {
-    const { username, password } = await req.json();
+    const dto: LoginResponse = await req.json();
 
-    if (!username || !password) {
-      return NextResponse.json(
-        { message: "필수 입력값 누락" },
-        { status: 400 }
-      );
+    if (!dto.username || !dto.password) {
+      return NextResponse.json({ message: "필수 입력값 누락" }, { status: 400 });
     }
 
-    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-      method: "POST",
+    const response = await axios.post(`${API_BASE_URL}/api/auth/login`, dto, {
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      validateStatus: () => true,
     });
 
-    if (!response.ok) {
-      return NextResponse.json(
-        { message: "로그인 실패" },
-        { status: response.status }
-      );
-    }
-
-    let token = response.headers.get("Authorization");
+    let token = response.headers["authorization"];
     if (!token) {
       try {
-        const data = await response.json();
+        const data = response.data;
         token = data?.token || data?.access_token || "";
       } catch {
         token = "";
@@ -39,7 +30,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "토큰 누락" }, { status: 500 });
     }
 
-    // ✅ 쿠키 설정
     const res = NextResponse.json({ message: "로그인 성공" });
 
     res.cookies.set({
@@ -49,12 +39,12 @@ export async function POST(req: NextRequest) {
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: 60 * 60 * 24 * 7, // 7일
+      maxAge: 60 * 60 * 24 * 7,
     });
 
     return res;
-  } catch (err) {
-    console.error("Login error:", err);
+  } catch (err: any) {
+    console.error("Login error:", err.response?.data || err.message);
     return NextResponse.json({ message: "서버 오류" }, { status: 500 });
   }
 }

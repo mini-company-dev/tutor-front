@@ -1,23 +1,10 @@
-import axios from "axios";
+import { JoinResponse, LoginResponse } from "@/types/auth";
+import { ApiResponse, requestApi } from "./apiFactory";
 
-export async function login(username: string, password: string) {
-  try {
-    const res = await axios.post(
-      "/api/login",
-      { username, password },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+export async function loginApi(dto: LoginResponse): Promise<ApiResponse<void>> {
+  return requestApi<void>("POST", "/api/auth/login", dto);
+}
 
-    if (res.status < 200 || res.status >= 300) {
-      return res.data?.message || "로그인 실패";
-    }
-
-    return res.data;
-  } catch (error: any) {
-    return error.response?.data?.message || "로그인 실패";
-  }
+export async function joinApi(dto: JoinResponse): Promise<ApiResponse<void>> {
+  return requestApi<void>("POST", "/api/auth/join", dto);
 }

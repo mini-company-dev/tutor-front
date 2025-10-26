@@ -1,9 +1,12 @@
-import { login } from "@/lib/auth";
+import { joinApi, loginApi } from "@/lib/auth";
 import { useState } from "react";
 
-export default function useLoginForm() {
+export default function useJoinForm() {
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -12,9 +15,15 @@ export default function useLoginForm() {
     e.preventDefault();
     setLoading(true);
 
+    if (password !== checkPassword) {
+      setMessage("비밀번호가 일치하지 않습니다.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const result = await login(username, password);
-      setMessage(result.message);
+      const result = await joinApi({ username, name, password });
+      setMessage(result.message ? result.message : "회원가입 성공");
       setIsSuccess(true);
     } catch (err: any) {
       setMessage(`${err.message}`);
@@ -28,7 +37,10 @@ export default function useLoginForm() {
     message,
     loading,
     isSuccess,
+
+    setName,
     setUsername,
     setPassword,
+    setCheckPassword,
   };
 }
