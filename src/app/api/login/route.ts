@@ -3,9 +3,7 @@ import { API_BASE_URL } from "@/lib/env";
 
 export async function POST(req: NextRequest) {
   try {
-    const formData = await req.formData();
-    const username = formData.get("username") as string;
-    const password = formData.get("password") as string;
+    const { username, password } = await req.json();
 
     if (!username || !password) {
       return NextResponse.json(
@@ -14,10 +12,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const response = await fetch(`${API_BASE_URL}/login`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ username, password }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
     });
 
     if (!response.ok) {
@@ -41,6 +39,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "토큰 누락" }, { status: 500 });
     }
 
+    // ✅ 쿠키 설정
     const res = NextResponse.json({ message: "로그인 성공" });
 
     res.cookies.set({

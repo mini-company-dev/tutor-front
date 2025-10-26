@@ -1,16 +1,23 @@
 import axios from "axios";
 
 export async function login(username: string, password: string) {
-  const formData = new FormData();
-  formData.append("username", username);
-  formData.append("password", password);
+  try {
+    const res = await axios.post(
+      "/api/login",
+      { username, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  const res = await axios.post("/api/login", formData);
-  const data = await res.data;
+    if (res.status < 200 || res.status >= 300) {
+      return res.data?.message || "로그인 실패";
+    }
 
-  if (res.status < 200 || res.status >= 300) {
-    return data?.message || "로그인 실패";
+    return res.data;
+  } catch (error: any) {
+    return error.response?.data?.message || "로그인 실패";
   }
-
-  return data;
 }
