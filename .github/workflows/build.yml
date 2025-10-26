@@ -46,5 +46,7 @@ jobs:
           script: |
             cd ~/front
             docker login -u ${{ secrets.DOCKERHUB_ID }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+            docker compose pull
+            docker compose down
             docker compose up -d
             docker image prune -f
