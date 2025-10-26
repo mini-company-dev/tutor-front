@@ -42,24 +42,26 @@ export default function LoginForm() {
       <div className="flex flex-col text-sm">
         <MiniInput
           ui={MiniUiType.BASIC}
+          uiSize={MiniUiSize.MEDIUM}
           label="아이디"
           id="username"
           type="username"
           onChange={(e) => setUsername(e.target.value)}
           placeholder="example"
-          className="w-full px-4 py-2 rounded-full shadow-inner"
+          className="w-full rounded-full"
         />
       </div>
 
       <div className="flex flex-col text-sm">
         <MiniInput
           ui={MiniUiType.BASIC}
+          uiSize={MiniUiSize.MEDIUM}
           label="비밀번호"
           id="password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           placeholder="••••••••"
-          className="w-full px-4 py-2 rounded-full shadow-inner"
+          className="w-full rounded-full"
         />
       </div>
 

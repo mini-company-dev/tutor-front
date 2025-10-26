@@ -59,7 +59,7 @@ export default function Header() {
         </MiniButton>
       ) : (
         <MiniButton
-          onClick={() => router.push("/login")}
+          onClick={() => router.push("/auth")}
           ui={MiniUiType.OUTLINE}
           uiMotion={[fadeIn(0.5)]}
           uiHover={[hoverScale()]}
