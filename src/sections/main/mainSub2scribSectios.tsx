@@ -1,7 +1,7 @@
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import MiniHeroSection from "@/mini-components/section/miniHeroSection";
-import MiniButton from "@/mini-components/ui/miniButton";
+import MiniButton from "@/mini-components/basic-ui/miniButton";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
 
 export default function MainSub2scribSection({

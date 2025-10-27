@@ -1,14 +1,14 @@
-import MiniBox from "@/mini-components/ui/miniBox";
-import MiniButton from "@/mini-components/ui/miniButton";
-import MiniInput from "@/mini-components/ui/miniInput";
+import MiniBox from "@/mini-components/basic-ui/miniBox";
+import MiniButton from "@/mini-components/basic-ui/miniButton";
+import MiniInput from "@/mini-components/basic-ui/miniInput";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import {
   hoverLift,
   hoverScale,
 } from "@/mini-components/animation/miniHoverAnimation";
-import MiniSelect from "@/mini-components/ui/miniDropdown";
 import TutorProfileComponent from "@/components/tutors/tutorProfileComponent";
 import { TutorType } from "@/types/tutor";
+import MiniDropdown from "@/mini-components/ui/dropdown/miniDropdown";
 
 const tutors: TutorType[] = [
   {
@@ -127,7 +127,7 @@ export default function TutorListSection({
 
           {/* 필터 & 정렬 */}
           <div className="flex gap-3">
-            <MiniSelect
+            <MiniDropdown
               uiHover={[hoverLift()]}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}
@@ -139,7 +139,7 @@ export default function TutorListSection({
                 { value: "korean", label: "한국어" },
               ]}
             />
-            <MiniSelect
+            <MiniDropdown
               uiHover={[hoverLift()]}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}
@@ -151,7 +151,7 @@ export default function TutorListSection({
                 { value: "daegu", label: "대구" },
               ]}
             />
-            <MiniSelect
+            <MiniDropdown
               uiHover={[hoverLift()]}
               className="rounded-full w-52 px-4 py-2.5 text-sm font-medium"
               ui={MiniUiType.OUTLINE}

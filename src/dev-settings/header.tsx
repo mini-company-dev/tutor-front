@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import MiniButton from "@/mini-components/ui/miniButton";
+import MiniButton from "@/mini-components/basic-ui/miniButton";
 import { useRouter } from "next/navigation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
@@ -9,14 +9,15 @@ import {
   fadeIn,
   fadeInDown,
 } from "@/mini-components/animation/miniMotionAnimation";
-import MiniBox from "@/mini-components/ui/miniBox";
+import MiniBox from "@/mini-components/basic-ui/miniBox";
 import { useEffect, useState } from "react";
 import { useAuthStore } from "@/store/authStore";
+import MiniImage from "@/mini-components/basic-ui/miniImage";
 
 export default function Header() {
   const router = useRouter();
+  const { picture, sub } = useAuthStore();
   const [hasToken, setHasToken] = useState(false);
-  const { sub } = useAuthStore();
 
   useEffect(() => {
     setHasToken(!!sub);
@@ -47,15 +48,13 @@ export default function Header() {
       </nav>
 
       {hasToken ? (
-        <MiniButton
+        <MiniImage
+          className="w-[40px] h-[40px] rounded-full"
+          src={picture}
           onClick={() => router.push("/mypage")}
-          ui={MiniUiType.OUTLINE}
           uiMotion={[fadeIn(0.5)]}
           uiHover={[hoverScale()]}
-          className="rounded-2xl text-sm"
-        >
-          My Page
-        </MiniButton>
+        />
       ) : (
         <MiniButton
           onClick={() => router.push("/auth")}

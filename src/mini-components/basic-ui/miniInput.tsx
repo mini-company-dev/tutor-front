@@ -30,10 +30,11 @@ const uiSizeStyle = {
 export default function MiniInput({
   label,
   className,
+
   ui = MiniUiType.NONE,
   uiSize = MiniUiSize.NONE,
-  uiMotion: motion,
   uiHover: hover,
+  uiMotion: motion,
   viewport = defaultViewport,
   ...props
 }: InputProps) {

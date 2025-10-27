@@ -3,7 +3,7 @@
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
-import MiniBox from "@/mini-components/ui/miniBox";
+import MiniBox from "@/mini-components/basic-ui/miniBox";
 import { TutorType } from "@/types/tutor";
 import { useRouter } from "next/navigation";
 

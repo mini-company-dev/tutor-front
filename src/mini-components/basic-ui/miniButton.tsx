@@ -8,10 +8,9 @@ import {
   MiniUiType,
 } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
-import { useEffect, useRef, useState } from "react";
 
-interface MiniBoxProps extends HTMLMotionProps<"div">, MiniComponetType {
-  children?: React.ReactNode;
+interface ButtonProps extends HTMLMotionProps<"button">, MiniComponetType {
+  children: React.ReactNode;
 }
 
 const uiStyle = {
@@ -22,28 +21,28 @@ const uiStyle = {
 };
 
 const uiSizeStyle = {
-  [MiniUiSize.SMALL]: "",
-  [MiniUiSize.MEDIUM]: "",
-  [MiniUiSize.LARGE]: "",
+  [MiniUiSize.SMALL]: "p-3",
+  [MiniUiSize.MEDIUM]: "px-5 py-2.5",
+  [MiniUiSize.LARGE]: "p-10",
   [MiniUiSize.NONE]: "",
 };
 
-export default function MiniBox({
+export default function MiniButton({
   children,
   className = "",
+
   ui = MiniUiType.NONE,
   uiSize = MiniUiSize.MEDIUM,
-
   uiMotion: motion,
-  viewport = defaultViewport,
   uiHover: hover,
+  viewport = defaultViewport,
   ...props
-}: MiniBoxProps) {
+}: ButtonProps) {
   const animation: Variants = mergeVariants(motion, hover);
-  const baseStyle = `${uiSizeStyle[uiSize]} ${uiStyle[ui]}`;
+  const baseStyle = `${uiSizeStyle[uiSize]} ${uiStyle[ui]} font-semibold`;
 
   return (
-    <fk.div
+    <fk.button
       variants={animation}
       initial={animation ? "hidden" : undefined}
       whileHover={animation ? "whileHover" : undefined}
@@ -53,6 +52,6 @@ export default function MiniBox({
       {...props}
     >
       {children}
-    </fk.div>
+    </fk.button>
   );
 }

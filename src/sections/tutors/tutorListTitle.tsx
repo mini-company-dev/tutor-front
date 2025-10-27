@@ -1,6 +1,6 @@
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
-import MiniBox from "@/mini-components/ui/miniBox";
+import MiniBox from "@/mini-components/basic-ui/miniBox";
 
 export default function TutorListTitle({ className }: { className?: string }) {
   return (

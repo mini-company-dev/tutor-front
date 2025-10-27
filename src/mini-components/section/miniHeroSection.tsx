@@ -30,7 +30,7 @@ export default function MiniHeroSection({
     return (
       <section className={`relative w-full overflow-hidden ${className}`}>
         <iframe
-          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 scale-[1.3] z-[-1]"
+          className="absolute inset-0 w-full h-full object-cover"
           src={video}
           allow="autoplay; fullscreen"
         />

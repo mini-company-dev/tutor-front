@@ -1,5 +1,5 @@
-import MiniBox from "@/mini-components/ui/miniBox";
-import MiniButton from "@/mini-components/ui/miniButton";
+import MiniBox from "@/mini-components/basic-ui/miniBox";
+import MiniButton from "@/mini-components/basic-ui/miniButton";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
 import TutorDetailSectionComponent from "@/components/tutors/tutorDetailsSectionComponent";
