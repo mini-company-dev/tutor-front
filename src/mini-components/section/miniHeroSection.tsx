@@ -29,12 +29,15 @@ export default function MiniHeroSection({
   if (video) {
     return (
       <section className={`relative w-full overflow-hidden ${className}`}>
-        <iframe
+        <video
           className="absolute inset-0 w-full h-full object-cover"
           src={video}
-          allow="autoplay; fullscreen"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
-        {children}
+        <div className="relative z-10">{children}</div>
       </section>
     );
   }
