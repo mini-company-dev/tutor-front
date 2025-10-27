@@ -1,6 +1,6 @@
 "use client";
 
-import { MemberType } from "@/types/Member";
+import { MEMBER_ROLE, MemberType } from "@/types/Member";
 import { create } from "zustand";
 
 interface AuthState extends MemberType {
@@ -12,7 +12,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   sub: "",
   username: "",
   name: "",
-  roles: [],
+  role: MEMBER_ROLE.ROLE_STUDENT,
   picture: "",
   exp: 0,
   iat: 0,
@@ -22,7 +22,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       sub: "",
       username: "",
       name: "",
-      roles: [],
+      role: MEMBER_ROLE.ROLE_STUDENT,
       exp: 0,
       iat: 0,
     }),

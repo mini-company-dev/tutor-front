@@ -20,7 +20,7 @@ strong {
   font-weight: bold;
 }
 
-section {
+/* section {
   position: relative;
   background-image: repeating-linear-gradient(
     to right,
@@ -43,9 +43,9 @@ section {
       transparent calc(100% / 20)
     );
   }
-}
+} */
 
-section::before,
+/* section::before,
 section::after {
   content: "";
   position: absolute;
@@ -61,7 +61,7 @@ section::before {
 
 section::after {
   bottom: 0;
-}
+} */
 
 
 .mini-no-transition {
