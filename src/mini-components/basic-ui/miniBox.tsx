@@ -31,7 +31,7 @@ export default function MiniBox({
   children,
   className = "",
   ui = MiniUiType.NONE,
-  uiSize = MiniUiSize.MEDIUM,
+  uiSize = MiniUiSize.NONE,
 
   uiHover,
   uiMotion,

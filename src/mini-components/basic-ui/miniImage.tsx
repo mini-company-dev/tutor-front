@@ -1,10 +1,14 @@
-"use client";
-
-import { motion as fk, Variants, HTMLMotionProps } from "framer-motion";
-import { mergeVariants, MiniComponetType } from "../miniComponentConfig";
+import { ViewportOptions } from "framer-motion";
+import { MiniComponetType } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
+import MiniBox from "./miniBox";
+import React from "react";
 
-interface MiniImageProps extends HTMLMotionProps<"img">, MiniComponetType {}
+interface MiniImageProps
+  extends React.ImgHTMLAttributes<HTMLImageElement>,
+    MiniComponetType {
+  viewport?: ViewportOptions;
+}
 
 export default function MiniImage({
   className = "",
@@ -15,19 +19,14 @@ export default function MiniImage({
   viewport = defaultViewport,
   ...props
 }: MiniImageProps) {
-  const animation: Variants = mergeVariants(uiMotion, uiHover);
-
   return (
-    <div className={`overflow-hidden ${className}`}>
-      <fk.img
-        variants={animation}
-        initial={animation ? "hidden" : undefined}
-        animate={animation ? "visible" : undefined}
-        whileHover={animation ? "whileHover" : undefined}
-        viewport={viewport}
-        className={`w-full h-full object-cover`}
-        {...props}
-      />
-    </div>
+    <MiniBox
+      uiMotion={uiMotion}
+      uiHover={uiHover}
+      viewport={viewport}
+      className={`overflow-hidden ${className}`}
+    >
+      <img className={`w-full h-full object-cover`} {...props} />
+    </MiniBox>
   );
 }
