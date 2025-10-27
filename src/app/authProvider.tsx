@@ -3,7 +3,7 @@
 import { PropsWithChildren, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 import axios from "axios";
-import { MemberType } from "@/types/member";
+import { MemberType } from "@/types/Member";
 
 export default function AuthProvider({ children }: PropsWithChildren) {
   const { setUser, clearUser } = useAuthStore();
