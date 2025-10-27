@@ -2,10 +2,11 @@
 
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { MiniUiSize, MiniUiType } from "@/mini-components/miniComponentConfig";
-import MiniButton from "@/mini-components/ui/miniButton";
-import MiniInput from "@/mini-components/ui/miniInput";
+import MiniButton from "@/mini-components/basic-ui/miniButton";
+import MiniInput from "@/mini-components/basic-ui/miniInput";
 import { useRouter } from "next/navigation";
 import useJoinForm from "./useJoinForm";
+import { useEffect } from "react";
 
 export default function JoinForm() {
   const {
@@ -21,6 +22,12 @@ export default function JoinForm() {
   } = useJoinForm();
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (isSuccess) {
+      router.push("/auth");
+    }
+  }, [isSuccess]);
 
   return (
     <form className="flex flex-col gap-4">

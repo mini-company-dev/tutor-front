@@ -2,8 +2,8 @@
 
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { MiniUiSize, MiniUiType } from "@/mini-components/miniComponentConfig";
-import MiniButton from "@/mini-components/ui/miniButton";
-import MiniInput from "@/mini-components/ui/miniInput";
+import MiniButton from "@/mini-components/basic-ui/miniButton";
+import MiniInput from "@/mini-components/basic-ui/miniInput";
 import useLoginForm from "./useLoginForm";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";

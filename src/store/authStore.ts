@@ -13,6 +13,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   username: "",
   name: "",
   roles: [],
+  picture: "",
   exp: 0,
   iat: 0,
   setUser: (user) => set((state) => ({ ...state, ...user })),

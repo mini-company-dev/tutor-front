@@ -1,20 +1,21 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   mergeVariants,
   MiniComponetType,
   MiniUiType,
-} from "../miniComponentConfig";
+} from "../../miniComponentConfig";
+import MiniSelect, { OptionType } from "./miniSelect";
 
 // === MiniDropdown Props ===
 interface MiniDropdownProps
   extends React.HTMLAttributes<HTMLDivElement>,
     MiniComponetType {
-  label?: string;
-  options: { value: string; label: string }[];
+  options: OptionType[];
   placeholder?: string;
+
   onValueSelect?: (value: string) => void;
 }
 
@@ -32,6 +33,7 @@ export default function MiniDropdown({
   placeholder = "선택하세요",
   onValueSelect,
   className = "",
+
   ui = MiniUiType.BASIC,
   uiMotion: motionVariant,
   uiHover: hover,
@@ -55,8 +57,8 @@ export default function MiniDropdown({
   }, []);
 
   const handleSelect = (value: string) => {
-    setSelected(value);
     setIsOpen(false);
+    setSelected(value);
     onValueSelect?.(value);
   };
 
@@ -89,38 +91,7 @@ export default function MiniDropdown({
         </motion.span>
       </motion.button>
 
-      {/* 드롭다운 리스트 */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.ul
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className={`
-              absolute w-52 mt-2 rounded-xl overflow-hidden z-50
-              border border-gray-200 bg-white/80 backdrop-blur-md
-              shadow-[0_8px_20px_rgba(0,0,0,0.08)]
-            `}
-          >
-            {options.map((opt, idx) => (
-              <motion.li
-                key={idx}
-                whileHover={{ backgroundColor: "var(--brand)", color: "#fff" }}
-                className="
-                  mini-no-transition
-                  px-4 py-2 text-sm cursor-pointer
-                  text-[var(--foreground)] bg-transparent
-                  transition-colors duration-150
-                "
-                onClick={() => handleSelect(opt.value)}
-              >
-                {opt.label}
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
+      <MiniSelect isOpen={isOpen} options={options} onSelect={handleSelect} />
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function RootLayout({
       <MiniBox
         ui={MiniUiType.BASIC}
         uiMotion={[fadeInUp()]}
-        className="rounded-2xl shadow-md w-[370px] p-8"
+        className="rounded-2xl shadow-md w-[50vw] p-8"
       >
         {children}
       </MiniBox>
