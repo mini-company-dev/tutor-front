@@ -1,21 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { API_BASE_URL } from "@/lib/env";
-import { LoginRequest } from "@/types/auth";
+import { LoginRequest, LoginResponse } from "@/types/auth";
+import { ApiResponse } from "@/lib/apiFactory";
 
-export interface ApiRequest {
-  token: string | null;
-}
-
-export async function POST(req: NextRequest) {
+export async function POST(
+  req: NextRequest
+): Promise<NextResponse<ApiResponse<LoginResponse>>> {
   try {
     const dto: LoginRequest = await req.json();
 
     if (!dto.username || !dto.password) {
       return NextResponse.json(
         {
-          data: { token: null },
-          message: "인증 정보가 없습니다.",
+          req: { token: null },
+          explanation: "인증 정보가 없습니다.",
         },
         { status: 400 }
       );
@@ -39,17 +38,17 @@ export async function POST(req: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          data: { token: null },
-          message: "인증 실패",
+          req: { token: null },
+          explanation: "인증 실패",
         },
-        { status: 500 }
+        { status: 400 }
       );
     }
 
     const res = NextResponse.json(
       {
-        data: { token: token },
-        message: "인증 성공",
+        req: { token: token },
+        explanation: "인증 성공",
       },
       { status: 200 }
     );
@@ -59,8 +58,8 @@ export async function POST(req: NextRequest) {
     console.error("Login error:", err.response?.data || err.message);
     return NextResponse.json(
       {
-        data: { token: null },
-        message: "인증 실패",
+        req: { token: null },
+        explanation: "인증 실패",
       },
       { status: 500 }
     );

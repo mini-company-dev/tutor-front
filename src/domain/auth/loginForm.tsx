@@ -26,7 +26,7 @@ export default function LoginForm() {
   const { setUser, clearUser } = useAuthStore();
 
   useEffect(() => {
-    if (isSuccess && data) {
+    if (isSuccess && data?.token) {
       localStorage.setItem("token", data.token);
       axios.defaults.headers.common["token"] = `${data.token}`;
       const payload = jwtDecode(data.token);
