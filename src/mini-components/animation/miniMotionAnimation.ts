@@ -4,7 +4,7 @@
 import { Variants } from "framer-motion";
 
 /** 기본 fade (서서히 나타남) */
-export const fadeIn = (duration: number = 0.4): Variants => ({
+export const fadeIn = (duration: number = 0.7): Variants => ({
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -15,7 +15,7 @@ export const fadeIn = (duration: number = 0.4): Variants => ({
 /** 위로 등장 (자연스럽게 올라옴) */
 export const fadeInUp = (
   distance: number = 20,
-  duration: number = 0.4
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 0, y: distance },
   visible: {
@@ -28,7 +28,7 @@ export const fadeInUp = (
 /** 아래로 등장 (내려오듯 등장) */
 export const fadeInDown = (
   distance: number = -20,
-  duration: number = 0.4
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 0, y: distance },
   visible: {
@@ -41,7 +41,7 @@ export const fadeInDown = (
 /** 왼쪽에서 등장 */
 export const fadeInLeft = (
   distance: number = -20,
-  duration: number = 0.4
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 0, x: distance },
   visible: {
@@ -54,7 +54,7 @@ export const fadeInLeft = (
 /** 오른쪽에서 등장 */
 export const fadeInRight = (
   distance: number = 20,
-  duration: number = 0.4
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 0, x: distance },
   visible: {
@@ -67,7 +67,7 @@ export const fadeInRight = (
 /** 줌인 (확대되며 등장) */
 export const zoomIn = (
   scaleStart: number = 0.8,
-  duration: number = 0.4
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 0, scale: scaleStart },
   visible: {
@@ -80,7 +80,7 @@ export const zoomIn = (
 /** 줌아웃 (축소되며 사라짐) */
 export const zoomOut = (
   scaleEnd: number = 0.8,
-  duration: number = 0.4
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 1, scale: 1 },
   visible: {
@@ -93,7 +93,7 @@ export const zoomOut = (
 /** 회전 등장 */
 export const rotateIn = (
   degree: number = -10,
-  duration: number = 0.5
+  duration: number = 0.7
 ): Variants => ({
   hidden: { opacity: 0, rotate: degree },
   visible: {
@@ -119,7 +119,7 @@ export const popIn = (
 /** 살짝 흔들림 (attention 효과) */
 export const shake = (
   distance: number = 5,
-  duration: number = 0.5
+  duration: number = 0.7
 ): Variants => ({
   hidden: { x: 0 },
   visible: {
@@ -131,7 +131,7 @@ export const shake = (
 /** 위로 연속적 튀어오름 (버튼 hover용) */
 export const bounce = (
   height: number = 8,
-  duration: number = 0.6
+  duration: number = 0.7
 ): Variants => ({
   hidden: { y: 0 },
   visible: {

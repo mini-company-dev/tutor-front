@@ -3,30 +3,46 @@ import { MiniUiType } from "@/mini-components/miniComponentConfig";
 import MiniHeroSection from "@/mini-components/section/miniHeroSection";
 import MiniButton from "@/mini-components/basic-ui/miniButton";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
+import MiniImage from "@/mini-components/basic-ui/miniImage";
+import MiniBox from "@/mini-components/basic-ui/miniBox";
+import {
+  fadeIn,
+  fadeInUp,
+} from "@/mini-components/animation/miniMotionAnimation";
 
 export default function MainHeroSection({ className }: { className?: string }) {
   return (
-    <MiniHeroSection
-      className={`h-[50vh] sm:h-screen ${className ?? ""}`}
-      video="https://www.youtube.com/embed/k49dtURLDoE?autoplay=1&mute=1&loop=1&playlist=k49dtURLDoE&controls=0&showinfo=0&modestbranding=1"
-    >
-      <div className="relative z-10 col-start-1 col-end-21 flex flex-col items-center justify-center text-center px-4 sm:px-0">
-        <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
-          영어가 내 <strong>생활속</strong>에 스며들다
-        </h1>
-        <MiniSpacer size={10} />
-        <p className="text-base sm:text-lg text-[var(--text-light)]">
-          나만의 맞춤형 튜터와 <strong>EasyFun</strong> 화상영어
-        </p>
-        <MiniSpacer size={20} />
-        <MiniButton
-          ui={MiniUiType.BRAND}
-          className="w-[70%] sm:w-30 rounded-2xl mt-4"
-          uiHover={[hoverScale()]}
-        >
-          시작하기
-        </MiniButton>
-      </div>
-    </MiniHeroSection>
+    <div className="bg-[var(--brand)]/30">
+      <MiniSpacer size={100} />
+      <section>
+        <div className="relative z-10 col-start-5 col-end-10 flex flex-col justify-center">
+          <MiniBox uiMotion={[fadeInUp()]}>
+            <h1 className="text-5xl font-bold">
+              마스터 튜터의 멘토링,
+              <br />
+              <strong>학습을 완성</strong>시킨다.
+            </h1>
+          </MiniBox>
+          <MiniSpacer size={10} />
+          <MiniBox uiMotion={[fadeIn(0.7)]}>
+            <p className="text-lg text-[var(--text-light)]">
+              나만의 맞춤형 튜터와
+              <strong>EasyFun</strong>
+              화상영어
+            </p>
+          </MiniBox>
+          <MiniSpacer size={20} />
+          <MiniButton
+            ui={MiniUiType.BRAND}
+            className="w-30 rounded-2xl"
+            uiHover={[hoverScale()]}
+          >
+            시작하기
+          </MiniButton>
+        </div>
+        <MiniImage className="col-start-10 col-end-19" src="maintutor.png" />
+      </section>
+      <MiniSpacer size={100} />
+    </div>
   );
 }
