@@ -10,6 +10,7 @@ export default function MainAboutSection({
 }) {
   return (
     <div className={`${className}`}>
+      <MiniSpacer size={200} />
       <section>
         <MiniBox
           className="col-start-1 col-end-21 text-center px-4 sm:px-0"
@@ -28,6 +29,7 @@ export default function MainAboutSection({
       </section>
       <MiniSpacer size={30} />
       <MainAboutImageSection />
+      <MiniSpacer size={200} />
     </div>
   );
 }

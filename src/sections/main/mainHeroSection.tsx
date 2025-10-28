@@ -1,6 +1,5 @@
 import { hoverScale } from "@/mini-components/animation/miniHoverAnimation";
 import { MiniUiType } from "@/mini-components/miniComponentConfig";
-import MiniHeroSection from "@/mini-components/section/miniHeroSection";
 import MiniButton from "@/mini-components/basic-ui/miniButton";
 import MiniSpacer from "@/mini-components/ui/miniSpacer";
 import MiniImage from "@/mini-components/basic-ui/miniImage";
@@ -12,7 +11,7 @@ import {
 
 export default function MainHeroSection({ className }: { className?: string }) {
   return (
-    <div className="bg-[var(--brand)]/30">
+    <div className={`bg-[var(--brand)]/30 ${className}`}>
       <MiniSpacer size={100} />
       <section>
         <div className="relative z-10 col-start-5 col-end-10 flex flex-col justify-center">
