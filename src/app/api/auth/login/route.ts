@@ -2,15 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { API_BASE_URL } from "@/lib/env";
 import { LoginRequest } from "@/types/auth";
-import { ApiResponse } from "./../../../../lib/apiFactory";
 
 export interface ApiRequest {
   token: string | null;
 }
 
-export async function POST(
-  req: NextRequest
-): Promise<NextResponse<ApiResponse<ApiRequest>>> {
+export async function POST(req: NextRequest) {
   try {
     const dto: LoginRequest = await req.json();
 
