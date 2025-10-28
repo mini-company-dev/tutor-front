@@ -32,9 +32,9 @@ export default function MainAboutImageSection({
       <section className={className}>
         <div className="col-start-3 col-end-19 grid grid-cols-4 gap-8">
           <MiniImageInsideCard
-            className="h-[300px] rounded-2xl"
+            className="h-[300px] rounded-2xl shadow-lg"
             childClassName="text-white items-center justify-center"
-            image="./main-picture/pic1.jpg"
+            src="./main-picture/picture1.png"
             uiHover={[hoverLift(), hoverBright(0.6, 0.3)]}
             uiSize={MiniUiSize.NONE}
           >
@@ -43,9 +43,9 @@ export default function MainAboutImageSection({
           </MiniImageInsideCard>
 
           <MiniImageInsideCard
-            className="h-[300px] rounded-2xl"
+            className="h-[300px] rounded-2xl shadow-lg"
             childClassName="text-white items-center justify-center"
-            image="./main-picture/pic2.jpg"
+            src="./main-picture/picture2.png"
             uiHover={[hoverLift(), hoverBright(0.6, 0.3)]}
             uiSize={MiniUiSize.NONE}
           >
@@ -54,9 +54,9 @@ export default function MainAboutImageSection({
           </MiniImageInsideCard>
 
           <MiniImageInsideCard
-            className="h-[300px] rounded-2xl"
+            className="h-[300px] rounded-2xl shadow-lg"
             childClassName="text-white items-center justify-center"
-            image="./main-picture/pic3.jpg"
+            src="./main-picture/picture3.png"
             uiHover={[hoverLift(), hoverBright(0.6, 0.3)]}
             uiSize={MiniUiSize.NONE}
           >
@@ -65,9 +65,9 @@ export default function MainAboutImageSection({
           </MiniImageInsideCard>
 
           <MiniImageInsideCard
-            className="h-[300px] rounded-2xl"
+            className="h-[300px] rounded-2xl shadow-lg"
             childClassName="text-white items-center justify-center"
-            image="./tutor.png"
+            src="./main-picture/picture4.png"
             uiHover={[hoverLift(), hoverBright(0.6, 0.3)]}
             uiSize={MiniUiSize.NONE}
           >
@@ -86,7 +86,7 @@ export default function MainAboutImageSection({
         <MiniImageCard
           className="rounded-xl p-3"
           childClassName="rounded-xl h-[200px]"
-          image="./main-picture/pic1.jpg"
+          src="./main-picture/pic1.jpg"
           ui={MiniUiType.BASIC}
           uiSize={MiniUiSize.NONE}
         >
@@ -96,7 +96,7 @@ export default function MainAboutImageSection({
         <MiniImageCard
           className="rounded-xl p-3"
           childClassName="rounded-xl h-[200px]"
-          image="./main-picture/pic2.jpg"
+          src="./main-picture/pic2.jpg"
           ui={MiniUiType.BASIC}
           uiSize={MiniUiSize.NONE}
         >
@@ -106,7 +106,7 @@ export default function MainAboutImageSection({
         <MiniImageCard
           className="rounded-xl p-3"
           childClassName="rounded-xl h-[200px]"
-          image="./main-picture/pic3.jpg"
+          src="./main-picture/pic3.jpg"
           ui={MiniUiType.BASIC}
           uiSize={MiniUiSize.NONE}
         >
@@ -116,7 +116,7 @@ export default function MainAboutImageSection({
         <MiniImageCard
           className="rounded-xl p-3"
           childClassName="rounded-xl h-[200px]"
-          image="./tutor.png"
+          src="./tutor.png"
           ui={MiniUiType.BASIC}
           uiSize={MiniUiSize.NONE}
         >

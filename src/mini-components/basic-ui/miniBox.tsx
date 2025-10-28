@@ -9,7 +9,7 @@ import {
 } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
 
-interface MiniBoxProps extends HTMLMotionProps<"div">, MiniComponetType {
+export interface MiniBoxProps extends HTMLMotionProps<"div">, MiniComponetType {
   children?: React.ReactNode;
 }
 

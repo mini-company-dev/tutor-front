@@ -52,7 +52,6 @@ export default function Header() {
           className="w-[40px] h-[40px] rounded-full"
           src={picture}
           onClick={() => router.push("/mypage")}
-          uiMotion={[fadeIn(0.5)]}
           uiHover={[hoverScale()]}
         />
       ) : (

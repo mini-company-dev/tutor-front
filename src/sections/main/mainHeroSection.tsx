@@ -40,7 +40,10 @@ export default function MainHeroSection({ className }: { className?: string }) {
             시작하기
           </MiniButton>
         </div>
-        <MiniImage className="col-start-10 col-end-19" src="maintutor.png" />
+        <MiniImage
+          className="col-start-10 col-end-19"
+          src="./main-picture/maintutor.png"
+        />
       </section>
       <MiniSpacer size={100} />
     </div>
