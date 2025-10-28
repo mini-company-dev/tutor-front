@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
           data: { token: null },
           message: "인증 정보가 없습니다.",
         },
-        { status: 500 }
+        { status: 400 }
       );
     }
 
