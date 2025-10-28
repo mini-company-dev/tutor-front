@@ -4,7 +4,7 @@ import { defaultViewport } from "../animation/miniViewPort";
 import MiniBox from "./miniBox";
 import React from "react";
 
-interface MiniImageProps
+export interface MiniImageProps
   extends React.ImgHTMLAttributes<HTMLImageElement>,
     MiniComponetType {
   viewport?: ViewportOptions;

@@ -1,19 +1,14 @@
 "use client";
 
-import { HTMLMotionProps, Variants, ViewportOptions } from "framer-motion";
-import {
-  mergeVariants,
-  MiniComponetType,
-  MiniUiType,
-} from "../miniComponentConfig";
+import { Variants } from "framer-motion";
+import { mergeVariants, MiniUiType } from "../miniComponentConfig";
 import { ReactNode } from "react";
-import MiniImage from "./../basic-ui/miniImage";
-import MiniBox from "../basic-ui/miniBox";
+import MiniImage, { MiniImageProps } from "./../basic-ui/miniImage";
+import MiniBox, { MiniBoxProps } from "../basic-ui/miniBox";
 
-interface CarouselProps extends HTMLMotionProps<"div">, MiniComponetType {
+interface MiniImageInsideCard extends MiniImageProps {
   children?: ReactNode;
   childClassName?: string;
-  image: string;
 }
 
 const uiStyle = {
@@ -25,66 +20,38 @@ const uiStyle = {
 
 export function MiniImageInsideCard({
   children,
-  image = "",
-  className = "",
   childClassName = "",
-  ui = MiniUiType.NONE,
-  uiMotion,
-  uiHover,
-  uiSize,
-  viewport,
   ...props
-}: CarouselProps) {
-  const animation: Variants = mergeVariants(uiMotion, uiHover);
-
-  const baseStyle = "relative group flex flex-col shadow-lg";
+}: MiniImageInsideCard) {
+  const baseStyle = "relative group flex flex-col";
 
   return (
-    <MiniBox className={`${baseStyle} ${uiStyle[ui]}`} {...props}>
-      <MiniImage
-        className={`${className}`}
-        uiHover={uiHover}
-        uiMotion={uiMotion}
-        uiSize={uiSize}
-        viewport={viewport}
-        src={image}
-      />
-
+    <div className={`${baseStyle}`}>
+      <MiniImage {...props} />
       <div
         className={`absolute inset-0 flex flex-col opacity-0 group-hover:opacity-100 z-10 pointer-events-none ${childClassName}`}
       >
         {children}
       </div>
-    </MiniBox>
+    </div>
   );
+}
+
+interface MiniImageCard extends MiniBoxProps {
+  children?: ReactNode;
+  src?: string;
+  childClassName?: string;
 }
 
 export function MiniImageCard({
   children,
-  image = "",
-  className = "",
   childClassName = "",
-  ui = MiniUiType.NONE,
-  uiMotion,
-  uiHover,
-  uiSize,
-  viewport,
+  src,
   ...props
-}: CarouselProps) {
-  const animation: Variants = mergeVariants(uiMotion, uiHover);
-
-  const baseStyle = "relative group flex flex-col shadow-lg";
-
+}: MiniImageCard) {
   return (
-    <MiniBox
-      className={`${baseStyle} ${uiStyle[ui]} ${className}`}
-      uiHover={uiHover}
-      uiMotion={uiMotion}
-      uiSize={uiSize}
-      viewport={viewport}
-      {...props}
-    >
-      <MiniImage src={image} className={`${childClassName}`} />
+    <MiniBox {...props}>
+      <MiniImage src={src} className={`${childClassName}`} />
       {children}
     </MiniBox>
   );
