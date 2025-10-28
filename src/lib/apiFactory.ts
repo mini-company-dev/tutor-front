@@ -1,8 +1,10 @@
-import axios, { AxiosRequestConfig, Method } from "axios";
+import { ServerApiResponse } from "@/app/api/serverApiFactory";
+import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
+import { NextApiResponse } from "next";
 
 export interface ApiResponse<T> {
-  data?: T;
-  message?: string;
+  req?: T;
+  explanation?: string;
 }
 
 export async function requestApi<T>(
@@ -12,7 +14,7 @@ export async function requestApi<T>(
   config?: AxiosRequestConfig
 ): Promise<ApiResponse<T>> {
   try {
-    const res = await axios.request({
+    const res: AxiosResponse<ApiResponse<T>> = await axios.request({
       method,
       url,
       data,
@@ -20,14 +22,17 @@ export async function requestApi<T>(
       ...config,
     });
 
+    if (res && res.data) {
+      return res.data;
+    }
     return {
-      data: res.data.data,
-      message: res.data?.message || "요청 성공",
+      req: undefined,
+      explanation: "요청 실패",
     };
   } catch (error: any) {
     return {
-      data: undefined,
-      message: error.response?.data?.message || error.message || "요청 실패",
+      req: undefined,
+      explanation: "요청 실패",
     };
   }
 }

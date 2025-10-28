@@ -5,8 +5,7 @@ import TutorListTitle from "../../sections/tutors/tutorListTitle";
 export default function TutorListPage() {
   return (
     <div>
-      <MiniSpacer size={100} />
-      <TutorListTitle />
+      <TutorListTitle className="shadow-lg" />
       <MiniSpacer size={100} />
       <TutorListSection />
       <MiniSpacer size={150} />

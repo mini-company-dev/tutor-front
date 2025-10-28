@@ -39,7 +39,7 @@ export default function MainAboutImageSection({
             uiSize={MiniUiSize.NONE}
           >
             <h3 className="text-xl font-bold mt-2">직장인을 위한 비즈니스</h3>
-            <p>초급-중급 영어</p>
+            <p>초급-중급</p>
           </MiniImageInsideCard>
 
           <MiniImageInsideCard

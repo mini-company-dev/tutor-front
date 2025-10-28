@@ -1,22 +1,39 @@
-import { fadeInUp } from "@/mini-components/animation/miniMotionAnimation";
-import { MiniUiType } from "@/mini-components/miniComponentConfig";
+import {
+  fadeIn,
+  fadeInUp,
+} from "@/mini-components/animation/miniMotionAnimation";
 import MiniBox from "@/mini-components/basic-ui/miniBox";
+import MiniImage from "@/mini-components/basic-ui/miniImage";
+import MiniSpacer from "@/mini-components/ui/miniSpacer";
 
 export default function TutorListTitle({ className }: { className?: string }) {
   return (
-    <section className={`${className}`}>
-      <MiniBox
-        className="col-start-1 col-end-21 text-center"
-        ui={MiniUiType.NONE}
-        uiMotion={[fadeInUp()]}
-      >
-        <h1 className="text-5xl font-bold">Find the Right Tutor for You</h1>
-        <p className="text-[var(--text-light)] mt-4">
-          당신의 목표, 수준, 시간에 맞는 맞춤형 튜터를 찾아보세요.
-          <br />
-          언제 어디서나 쉽고 빠르게 예약하고, 성장의 여정을 시작하세요.
-        </p>
-      </MiniBox>
-    </section>
+    <div className={`bg-[var(--brand)]/30 ${className}`}>
+      <MiniSpacer size={50} />
+      <section>
+        <div className="relative z-10 col-start-5 col-end-10 flex flex-col justify-center">
+          <MiniBox uiMotion={[fadeInUp()]}>
+            <h1 className="text-5xl font-bold">
+              마스터 튜터의 멘토링,
+              <br />
+              <strong>학습을 완성</strong>시킨다.
+            </h1>
+          </MiniBox>
+          <MiniSpacer size={10} />
+          <MiniBox uiMotion={[fadeIn(0.7)]}>
+            <p className="text-lg text-[var(--text-light)]">
+              나만의 맞춤형 튜터와
+              <strong>EasyFun</strong>
+              화상영어
+            </p>
+          </MiniBox>
+        </div>
+        <MiniImage
+          className="col-start-10 col-end-19"
+          src="./tutor-picture/main.png"
+        />
+      </section>
+      <MiniSpacer size={50} />
+    </div>
   );
 }

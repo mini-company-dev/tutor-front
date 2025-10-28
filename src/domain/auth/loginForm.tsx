@@ -19,21 +19,21 @@ export default function LoginForm() {
     isSuccess,
     setUsername,
     setPassword,
-    response,
+    data,
   } = useLoginForm();
 
   const router = useRouter();
   const { setUser, clearUser } = useAuthStore();
 
   useEffect(() => {
-    if (isSuccess && response) {
-      localStorage.setItem("token", response.token);
-      axios.defaults.headers.common["token"] = `${response.token}`;
-      const payload = jwtDecode(response.token);
+    if (isSuccess && data) {
+      localStorage.setItem("token", data.token);
+      axios.defaults.headers.common["token"] = `${data.token}`;
+      const payload = jwtDecode(data.token);
       setUser(payload);
       router.push("/");
     }
-  }, [isSuccess, response]);
+  }, [isSuccess, data]);
 
   return (
     <form className="flex flex-col gap-4">
