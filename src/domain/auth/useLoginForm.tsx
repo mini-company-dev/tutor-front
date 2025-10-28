@@ -9,7 +9,7 @@ export default function useLoginForm() {
   const [password, setPassword] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState("");
-  const [response, setResponse] = useState<LoginResponse>();
+  const [data, setData] = useState<LoginResponse>();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,11 +21,11 @@ export default function useLoginForm() {
         username,
         password,
       });
-      setMessage(result.message ? result.message : "로그인 성공");
+      setMessage(result.explanation ? result.explanation : "로그인 성공");
       setIsSuccess(true);
-      setResponse(result.data);
+      setData(result.req);
     } catch (err: any) {
-      setMessage(`${err.message}`);
+      setMessage(`${err.explanation}`);
       setIsSuccess(false);
     } finally {
       setLoading(false);
@@ -39,6 +39,6 @@ export default function useLoginForm() {
     isSuccess,
     setUsername,
     setPassword,
-    response,
+    data,
   };
 }

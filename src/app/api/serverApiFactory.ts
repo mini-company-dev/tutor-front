@@ -27,11 +27,12 @@ export function createServerApiHandler<T>(method: Method, path: string) {
       };
 
       const res = await axios.request<ServerApiResponse<T>>(config);
+      const response = res.data;
 
       return NextResponse.json<ApiResponse<T>>(
         {
-          data: res.data as T,
-          message: res.data?.message ?? "요청 성공",
+          req: response.data as T,
+          explanation: response.message ?? "요청 성공",
         },
         { status: res.status }
       );
@@ -40,7 +41,8 @@ export function createServerApiHandler<T>(method: Method, path: string) {
       return NextResponse.json(
         {
           data: undefined,
-          message: err.response?.data?.message || err.message || "서버 오류"
+          explanation:
+            err.response?.data?.message || err.message || "서버 오류",
         },
         { status: err.response?.status || 500 }
       );

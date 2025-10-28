@@ -1,7 +1,21 @@
-export interface TutorType {
+export interface ClientTutorListType {
   id: string;
   name: string;
-  subject: string;
+  shortBio: string;
   rating: number;
-  price: string;
+  picture: string;
+  tags: string[];
+}
+
+export interface TutorListType {
+  id: string;
+  name: string;
+  bioVideoUrl: string;
+  shortBio: string;
+  rating: number;
+  picture: string;
+  classStyleFileUrl: string;
+  isActive: boolean;
+  specialties: string[];
+  tags: string[];
 }

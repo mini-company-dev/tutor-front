@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useAuthStore } from "@/store/authStore";
 import {
   RadialBarChart,
   RadialBar,
@@ -9,12 +7,11 @@ import {
   Line,
   ResponsiveContainer,
 } from "recharts";
+import MyPageStudentInfoSection from "@/sections/mypage/students/studentInfoSection";
 
 export default function StudentMyPage() {
-  const { name, picture } = useAuthStore();
-
   // 그래프용 예시 데이터
-  const matchData = [{ name: "튜터 적합도", value: 92, fill: "#06b6d4" }];
+  const matchData = [{ name: "튜터 적합도", value: 92, fill: "var(--brand)" }];
   const growthData = [
     { day: "Mon", value: 60 },
     { day: "Tue", value: 65 },
@@ -27,28 +24,14 @@ export default function StudentMyPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-8 space-y-10 text-center">
-      {/* 👋 환영 메시지 + 프로필 */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-col items-center justify-center space-y-3"
-      >
-        <img
-          src={picture || "/default-profile.png"}
-          alt="Profile"
-          className="w-20 h-20 rounded-full shadow-md object-cover"
-        />
-        <h3 className="text-2xl font-bold">
-          안녕, <span className="text-[var(--brand)]">{name}</span>님!
-        </h3>
-        <p className="text-gray-600">오늘도 영어 레벨업!</p>
-      </motion.div>
+      <MyPageStudentInfoSection />
 
       <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch">
         {/* 🔹 현재 튜터 적합도 */}
         <div className="flex-1 bg-white rounded-2xl p-6 shadow flex flex-col items-center justify-center">
-          <h4 className="text-lg font-semibold mb-2">현재 튜터 적합도</h4>
+          <h4 className="text-lg mb-2">
+            현재 튜터 적합도 <strong>92%</strong>
+          </h4>
           <ResponsiveContainer width={150} height={150}>
             <RadialBarChart
               cx="50%"
@@ -57,13 +40,12 @@ export default function StudentMyPage() {
               outerRadius="100%"
               barSize={12}
               data={matchData}
-              startAngle={180}
+              startAngle={360 * 0.92}
               endAngle={0}
             >
               <RadialBar dataKey="value" cornerRadius={8} />
             </RadialBarChart>
           </ResponsiveContainer>
-          <p className="text-2xl font-bold text-cyan-500 mt-[-10px]">92%</p>
         </div>
 
         {/* 🔸 성장 트래킹 */}

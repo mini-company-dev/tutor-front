@@ -23,10 +23,10 @@ export default function useJoinForm() {
 
     try {
       const result = await joinApi({ username, name, password });
-      setMessage(result.message ? result.message : "회원가입 성공");
+      setMessage(result.explanation ? result.explanation : "회원가입 성공");
       setIsSuccess(true);
     } catch (err: any) {
-      setMessage(`${err.message}`);
+      setMessage(`${err.explanation}`);
     } finally {
       setLoading(false);
     }

@@ -6,11 +6,9 @@ import MainSubscribSection from "@/sections/main/mainSubscribSectios";
 export default function Home() {
   return (
     <div>
-      <MainHeroSection />
-      <MiniSpacer size={200} />
+      <MainHeroSection className="shadow-lg" />
       <MainAboutSection />
-      <MiniSpacer size={200} />
-      <MainSubscribSection />
+      <MainSubscribSection className="shadow-lg" />
       <MiniSpacer size={250} />
     </div>
   );

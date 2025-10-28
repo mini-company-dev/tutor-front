@@ -10,6 +10,9 @@ export default function MainSubscribSection({
   className?: string;
 }) {
   return (
-    <MiniHeroSection className={`h-[50vh] sm:h-[80vh]`} video="video.mp4" />
+    <MiniHeroSection
+      className={`h-[50vh] sm:h-[80vh] ${className}`}
+      video="video.mp4"
+    />
   );
 }
