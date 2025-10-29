@@ -43,7 +43,7 @@ export default function LoginForm() {
           uiSize={MiniUiSize.MEDIUM}
           label="아이디"
           id="username"
-          type="username"
+          type="text"
           onChange={(e) => setUsername(e.target.value)}
           placeholder="example"
           className="w-full rounded-full"

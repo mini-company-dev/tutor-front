@@ -38,15 +38,13 @@ export default function MiniImageDropdown({
   className = "",
 
   ui = MiniUiType.BASIC,
-  uiMotion: motionVariant,
-  uiHover: hover,
+  uiMotion,
+  uiHover,
   ...props
 }: MiniDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<string>("");
   const ref = useRef<HTMLDivElement>(null);
-
-  const animation: Variants = mergeVariants(motionVariant, hover);
 
   // 바깥 클릭 닫기
   useEffect(() => {

@@ -1,7 +1,6 @@
 "use client";
 
-import { Variants } from "framer-motion";
-import { mergeVariants, MiniUiType } from "../miniComponentConfig";
+import { MiniUiType } from "../miniComponentConfig";
 import { ReactNode } from "react";
 import MiniImage, { MiniImageProps } from "./../basic-ui/miniImage";
 import MiniBox, { MiniBoxProps } from "../basic-ui/miniBox";

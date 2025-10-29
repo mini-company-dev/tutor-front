@@ -9,8 +9,10 @@ import {
 } from "../miniComponentConfig";
 import { defaultViewport } from "../animation/miniViewPort";
 
-interface ButtonProps extends HTMLMotionProps<"button">, MiniComponetType {
-  children: React.ReactNode;
+export interface ButtonProps
+  extends HTMLMotionProps<"button">,
+    MiniComponetType {
+  children?: React.ReactNode;
 }
 
 const uiStyle = {
@@ -33,12 +35,12 @@ export default function MiniButton({
 
   ui = MiniUiType.NONE,
   uiSize = MiniUiSize.MEDIUM,
-  uiMotion: motion,
-  uiHover: hover,
+  uiMotion,
+  uiHover,
   viewport = defaultViewport,
   ...props
 }: ButtonProps) {
-  const animation: Variants = mergeVariants(motion, hover);
+  const animation: Variants = mergeVariants(uiMotion, uiHover);
   const baseStyle = `${uiSizeStyle[uiSize]} ${uiStyle[ui]} font-semibold`;
 
   return (

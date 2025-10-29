@@ -1,20 +1,22 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, ViewportOptions } from "framer-motion";
 import {
   mergeVariants,
   MiniComponetType,
   MiniUiType,
 } from "../../miniComponentConfig";
 import MiniSelect, { OptionType } from "./miniSelect";
+import MiniButton, { ButtonProps } from "@/mini-components/basic-ui/miniButton";
+import { defaultViewport } from "@/mini-components/animation/miniViewPort";
 
 // === MiniDropdown Props ===
-interface MiniDropdownProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    MiniComponetType {
+interface MiniDropdownProps extends ButtonProps {
+  className?: string;
   options: OptionType[];
   placeholder?: string;
+  label?: string;
 
   onValueSelect?: (value: string) => void;
 }
@@ -29,23 +31,17 @@ const uiStyle = {
 
 // === 컴포넌트 ===
 export default function MiniDropdown({
+  label,
   options,
   placeholder = "선택하세요",
-  onValueSelect,
   className = "",
-
-  ui = MiniUiType.BASIC,
-  uiMotion: motionVariant,
-  uiHover: hover,
+  onValueSelect,
   ...props
 }: MiniDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<string>("");
   const ref = useRef<HTMLDivElement>(null);
 
-  const animation: Variants = mergeVariants(motionVariant, hover);
-
-  // 바깥 클릭 닫기
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -63,21 +59,21 @@ export default function MiniDropdown({
   };
 
   return (
-    <div ref={ref} className={`relative inline-block ${className}`} {...props}>
-      {/* 트리거 버튼 */}
-      <motion.button
-        variants={animation}
-        initial={animation ? "hidden" : undefined}
-        animate={animation ? "visible" : undefined}
-        whileHover={animation ? "whileHover" : undefined}
+    <div ref={ref} className={`relative`}>
+      {label && (
+        <label htmlFor={props.id} className="mini-text mb-1 block">
+          {label}
+        </label>
+      )}
+      <MiniButton
+        {...props}
         onClick={() => setIsOpen((p) => !p)}
         className={`
           flex justify-between items-center cursor-pointer
-          ${uiStyle[ui]}
           ${className}
         `}
       >
-        <span>
+        <span className="pr-2">
           {selected
             ? options.find((opt) => opt.value === selected)?.label
             : placeholder}
@@ -89,7 +85,7 @@ export default function MiniDropdown({
         >
           ▼
         </motion.span>
-      </motion.button>
+      </MiniButton>
 
       <MiniSelect isOpen={isOpen} options={options} onSelect={handleSelect} />
     </div>
